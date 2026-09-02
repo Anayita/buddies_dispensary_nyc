@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buddies Dispensary NYC | Dispensaria Legal de Cannabis en NYC — New York's Finest</title>
   <meta name="description" content="Buddies Dispensary NYC es la dispensaria legal de cannabis líder en Nueva York. Lower East Side, Mott Haven y Yankee Stadium. Productos premium, delivery y segundas oportunidades.">
+  <link rel="icon" href="images/buddies_logo.jpg" type="image/jpeg">
   
   <!-- Google Fonts: Archivo Black (Titulares urbanos) & Inter (Cuerpo legible) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -265,20 +266,21 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    .age-modal-badge {
-      width: 68px;
-      height: 68px;
-      margin: 0 auto 20px auto;
-      background: var(--color-red-subtle);
-      border: 2px solid var(--color-primary-light);
-      border-radius: 50%;
+    .age-modal-logo-wrap {
+      margin: 0 auto 16px auto;
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: var(--color-primary-light);
-      font-family: var(--font-headline);
-      font-size: 1.5rem;
-      box-shadow: 0 0 20px var(--color-red-glow);
+    }
+
+    .modal-logo-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #FFFFFF;
+      padding: 5px;
+      box-shadow: 0 0 25px rgba(217, 4, 41, 0.6);
+      border: 2px solid var(--color-primary-light);
     }
 
     .age-modal-card h2 {
@@ -351,18 +353,42 @@
     .header-left {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
     }
 
     .logo-link {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+    }
+
+    .header-logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #FFFFFF;
+      padding: 3px;
+      box-shadow: 0 0 12px rgba(217, 4, 41, 0.5);
+      border: 1px solid rgba(217, 4, 41, 0.6);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .logo-link:hover .header-logo-img {
+      transform: scale(1.08) rotate(-4deg);
+      box-shadow: 0 0 18px rgba(217, 4, 41, 0.8);
+    }
+
+    .logo-text-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
     }
 
     .logo-text {
       font-family: var(--font-headline);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: var(--color-white);
       letter-spacing: -0.03em;
     }
@@ -373,20 +399,22 @@
 
     @media (min-width: 640px) {
       .logo-text {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
       }
     }
 
     .logo-tag {
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       font-weight: 800;
       background: rgba(217, 4, 41, 0.2);
       border: 1px solid rgba(217, 4, 41, 0.5);
       color: var(--color-primary-light);
-      padding: 3px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       white-space: nowrap;
+      margin-top: 2px;
+      align-self: flex-start;
     }
 
     /* Selector de tienda interactivo */
@@ -1733,7 +1761,7 @@
     .footer-brand h4 {
       font-size: 1.6rem;
       color: var(--color-white);
-      margin-bottom: 12px;
+      margin-bottom: 4px;
     }
 
     .footer-tagline {
@@ -1884,7 +1912,9 @@
        ========================================================================== -->
   <div id="ageModalOverlay" class="age-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ageModalTitle">
     <div class="age-modal-card" id="ageModalNormal">
-      <div class="age-modal-badge">21+</div>
+      <div class="age-modal-logo-wrap">
+        <img src="images/buddies_logo.jpg" alt="Buddies NYC Logo" class="modal-logo-img">
+      </div>
       <h2 id="ageModalTitle">Verificación de Edad</h2>
       <p>Bienvenido a <strong class="text-red">Buddies Dispensary NYC</strong>. Para ingresar a nuestro sitio web y comprar productos de cannabis en el Estado de Nueva York, debes tener 21 años o más.</p>
       
@@ -1923,8 +1953,11 @@
     <div class="container header-inner">
       <div class="header-left">
         <a href="#" class="logo-link" aria-label="Buddies Dispensary NYC Inicio">
-          <span class="logo-text">BUDDIES <span>NYC</span></span>
-          <span class="logo-tag">DISPENSARY</span>
+          <img src="images/buddies_logo.jpg" alt="Buddies Dispensary NYC Logo" class="header-logo-img">
+          <div class="logo-text-group">
+            <span class="logo-text">BUDDIES <span>NYC</span></span>
+            <span class="logo-tag">DISPENSARY</span>
+          </div>
         </a>
 
         <!-- Selector interactivo de tienda -->
@@ -2071,7 +2104,7 @@
 
           <div class="trust-item">
             <div class="trust-icon-box">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
             </div>
             <div class="trust-text-box">
               <h4>Delivery Disponible</h4>
@@ -2777,7 +2810,13 @@
       <div class="footer-top-grid">
         <!-- Columna 1: Marca y Tono -->
         <div class="footer-brand">
-          <h4>BUDDIES <span class="text-red">NYC</span></h4>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <img src="images/buddies_logo.jpg" alt="Buddies NYC Logo" style="width: 48px; height: 48px; object-fit: contain; border-radius: 50%; background: #fff; padding: 3px; box-shadow: 0 0 12px rgba(217, 4, 41, 0.5);">
+            <div>
+              <h4 style="margin-bottom: 0; font-size: 1.4rem;">BUDDIES <span class="text-red">NYC</span></h4>
+              <span class="logo-tag">DISPENSARY</span>
+            </div>
+          </div>
           <p class="footer-tagline">"You get New York's finest. We get second chances."</p>
           <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px;">
             La primera dispensaria legal de cannabis en Manhattan y Bronx con enfoque en justicia social, calidad artesanal neoyorquina y empoderamiento comunitario.
