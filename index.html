@@ -267,34 +267,35 @@
     .age-modal-overlay {
       position: fixed;
       inset: 0;
-      background-color: rgba(7, 7, 7, 0.95);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background-color: rgba(7, 7, 7, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 99999;
+      z-index: 999999;
       padding: 20px;
       opacity: 1;
       visibility: visible;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
     }
 
     .age-modal-overlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      display: none !important;
     }
 
     .age-modal-card {
       background: linear-gradient(165deg, #1C0509 0%, #121212 55%, #0A140F 100%);
-      border: 1px solid rgba(217, 4, 41, 0.4);
+      border: 1px solid rgba(217, 4, 41, 0.5);
       border-radius: var(--radius-lg);
       padding: 40px 32px;
       max-width: 480px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(217, 4, 41, 0.25);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 50px rgba(217, 4, 41, 0.3);
       animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -304,14 +305,14 @@
     }
 
     .age-modal-logo-wrap {
-      margin: 0 auto 16px auto;
+      margin: 0 auto 18px auto;
       display: flex;
       justify-content: center;
     }
 
     .modal-logo-img {
-      width: 86px;
-      height: 86px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
       background: transparent;
       padding: 0;
@@ -320,7 +321,7 @@
     }
 
     .age-modal-card h2 {
-      font-size: 1.7rem;
+      font-size: 1.75rem;
       margin-bottom: 12px;
       color: var(--color-white);
     }
@@ -328,6 +329,7 @@
     .age-modal-card p {
       color: #E2E2E2;
       font-size: 0.95rem;
+      line-height: 1.55;
       margin-bottom: 28px;
     }
 
@@ -341,6 +343,7 @@
       margin-top: 20px;
       font-size: 0.75rem;
       color: #9CA3AF;
+      line-height: 1.4;
     }
 
     .btn-exit-age {
@@ -2034,6 +2037,20 @@
       to { transform: translateX(0); opacity: 1; }
     }
   </style>
+<script id="antiFlickerAgeScript">
+    // Si ya está verificado, ocultar el modal antes del primer render para evitar parpadeos
+    if (sessionStorage.getItem('buddies_age_verified_21') === 'true' || localStorage.getItem('buddies_age_verified_21') === 'true') {
+      document.documentElement.classList.add('age-pre-verified');
+    }
+  </script>
+  <style>
+    html.age-pre-verified #ageModalOverlay {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -3425,7 +3442,8 @@
       }
 
       // ------------------------------------------------------------------------
-      // 1. Verificación de Edad 21+ (Modal bloqueante con persistencia)
+      // ------------------------------------------------------------------------
+      // 1. Verificación de Edad 21+ (Modal bloqueante legal)
       // ------------------------------------------------------------------------
       const ageModalOverlay = document.getElementById('ageModalOverlay');
       const ageModalNormal = document.getElementById('ageModalNormal');
@@ -3433,15 +3451,22 @@
       const btnAgeConfirm = document.getElementById('btnAgeConfirm');
       const btnAgeDeny = document.getElementById('btnAgeDeny');
 
-      const isAgeVerified = localStorage.getItem('buddies_age_verified_21');
+      // Comprobar si ya fue verificado en esta sesión
+      const isAgeVerified = sessionStorage.getItem('buddies_age_verified_21') || localStorage.getItem('buddies_age_verified_21');
 
       if (isAgeVerified === 'true') {
         ageModalOverlay.classList.add('hidden');
+        document.body.style.overflow = '';
+      } else {
+        ageModalOverlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
       }
 
       btnAgeConfirm.addEventListener('click', () => {
+        sessionStorage.setItem('buddies_age_verified_21', 'true');
         localStorage.setItem('buddies_age_verified_21', 'true');
         ageModalOverlay.classList.add('hidden');
+        document.body.style.overflow = '';
         const msg = currentLang === 'en' ? '✓ Age verified. Welcome to Buddies Dispensary NYC!' : '✓ Edad verificada con éxito. ¡Bienvenido a Buddies Dispensary NYC!';
         showToast(msg);
       });
