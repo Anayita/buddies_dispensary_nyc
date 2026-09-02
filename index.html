@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buddies Dispensary NYC | Dispensaria Legal de Cannabis en NYC — New York's Finest</title>
-  <meta name="description" content="Buddies Dispensary NYC es la dispensaria legal de cannabis líder en Nueva York. Lower East Side, Mott Haven y Yankee Stadium. Productos premium, delivery y segundas oportunidades.">
+  <title>Buddies Dispensary NYC | Dispensaria Legal de Cannabis en Corona, Queens — New York's Finest</title>
+  <meta name="description" content="Buddies Dispensary NYC es la dispensaria legal de cannabis líder en Corona, Queens, NY. 102-58 43rd Avenue. Productos premium, delivery y segundas oportunidades.">
   <link rel="icon" href="images/buddies_logo.jpg" type="image/jpeg">
   
   <!-- Google Fonts: Archivo Black (Titulares urbanos) & Inter (Cuerpo legible) -->
@@ -417,20 +417,9 @@
       align-self: flex-start;
     }
 
-    /* Selector de tienda interactivo */
-    .store-selector-wrapper {
-      position: relative;
+    /* Badge de Ubicación única en Header */
+    .header-store-badge {
       display: none;
-    }
-
-    @media (min-width: 1024px) {
-      .store-selector-wrapper {
-        display: block;
-      }
-    }
-
-    .store-selector-btn {
-      display: flex;
       align-items: center;
       gap: 8px;
       background: rgba(255, 255, 255, 0.06);
@@ -440,13 +429,12 @@
       border-radius: var(--radius-pill);
       font-size: 0.85rem;
       font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
     }
 
-    .store-selector-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--color-primary-light);
+    @media (min-width: 1024px) {
+      .header-store-badge {
+        display: flex;
+      }
     }
 
     .store-status-dot {
@@ -455,54 +443,6 @@
       background-color: var(--color-green);
       border-radius: 50%;
       box-shadow: 0 0 8px var(--color-green);
-    }
-
-    .store-dropdown-menu {
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      width: 260px;
-      background: var(--color-dark-card);
-      border: 1px solid rgba(217, 4, 41, 0.3);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-hover);
-      padding: 8px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-8px);
-      transition: var(--transition);
-      z-index: 100;
-    }
-
-    .store-dropdown-menu.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .store-dropdown-item {
-      padding: 10px 12px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      transition: var(--transition);
-    }
-
-    .store-dropdown-item:hover, .store-dropdown-item.selected {
-      background: rgba(217, 4, 41, 0.12);
-    }
-
-    .store-dropdown-name {
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--color-white);
-    }
-
-    .store-dropdown-addr {
-      font-size: 0.75rem;
-      color: var(--color-text-muted);
     }
 
     /* Navegación Desktop */
@@ -618,10 +558,12 @@
       border-bottom: 1px solid var(--color-border);
     }
 
-    .mobile-store-picker {
+    .mobile-store-info-box {
       margin-top: 10px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(217, 4, 41, 0.3);
+      padding: 16px;
+      background: var(--color-dark-card);
+      border: 1px solid rgba(217, 4, 41, 0.3);
+      border-radius: var(--radius-md);
     }
 
     .mobile-store-title {
@@ -629,7 +571,7 @@
       font-weight: 700;
       color: var(--color-primary-light);
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
     /* ==========================================================================
@@ -1200,7 +1142,6 @@
       }
     }
 
-    /* 60-80 palabras según DESIGN.md */
     .story-paragraph {
       font-size: 1.1rem;
       line-height: 1.7;
@@ -1386,105 +1327,207 @@
     }
 
     /* ==========================================================================
-       10. NUESTRAS TIENDAS
+       10. NUESTRA TIENDA (UBICACIÓN ÚNICA: 102-58 43RD AVE, CORONA NY 11368)
        ========================================================================== */
     .stores-section {
       padding: 95px 0;
       background: linear-gradient(180deg, #0B0B0B 0%, #15080A 100%);
     }
 
-    .stores-grid {
+    .single-store-card {
+      background: var(--color-dark-card);
+      border: 1px solid rgba(217, 4, 41, 0.35);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(217, 4, 41, 0.15);
       display: grid;
       grid-template-columns: 1fr;
-      gap: 28px;
     }
 
-    @media (min-width: 1024px) {
-      .stores-grid {
-        grid-template-columns: repeat(3, 1fr);
+    @media (min-width: 992px) {
+      .single-store-card {
+        grid-template-columns: 1.15fr 1fr;
       }
     }
 
-    .store-card {
-      background: var(--color-dark-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: var(--transition);
-    }
-
-    .store-card:hover, .store-card.highlighted {
-      border-color: var(--color-primary-light);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(217, 4, 41, 0.2);
-    }
-
-    .store-card-map-header {
-      height: 170px;
+    .store-map-side {
       position: relative;
+      min-height: 380px;
       background: #181818;
-      overflow: hidden;
     }
 
-    .store-card-map-header img {
+    .store-map-iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      filter: saturate(0.8) contrast(1.1);
+      min-height: 380px;
+      border: 0;
+      display: block;
+      filter: contrast(1.05) saturate(1.1);
     }
 
-    .store-status-badge {
+    .store-map-floating-badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 16px;
+      left: 16px;
       background: rgba(11, 11, 11, 0.9);
       border: 1px solid var(--color-green);
       color: var(--color-green);
-      padding: 4px 10px;
+      padding: 6px 14px;
       border-radius: var(--radius-pill);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+      z-index: 10;
+    }
+
+    .store-info-side {
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      background: linear-gradient(165deg, #151515 0%, #1A0D10 100%);
+    }
+
+    .store-headline-group h3 {
+      font-size: 1.8rem;
+      color: var(--color-white);
+      margin-bottom: 6px;
+    }
+
+    .store-address-highlight {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-primary-light);
+      margin-bottom: 14px;
+    }
+
+    .store-description-text {
+      font-size: 0.95rem;
+      color: #D1D5DB;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .transit-block {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .transit-block-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-green-light);
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .store-card-body {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1;
-    }
-
-    .store-card-title {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-      color: var(--color-white);
-    }
-
-    .store-info-list {
+    .transit-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .store-info-item {
-      display: flex;
-      align-items: flex-start;
       gap: 10px;
       font-size: 0.88rem;
       color: #E2E2E2;
     }
 
-    .store-info-icon {
-      color: var(--color-primary-light);
+    .transit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .transit-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #B933AD; /* Color oficial línea 7 MTA */
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.8rem;
       flex-shrink: 0;
-      margin-top: 3px;
+    }
+
+    .transit-badge-bus {
+      background: #0039A6; /* MTA Bus blue */
+      border-radius: 4px;
+      width: auto;
+      padding: 0 6px;
+      height: 22px;
+      font-size: 0.75rem;
+    }
+
+    .transit-badge-car {
+      background: #10B981;
+      border-radius: 4px;
+      width: auto;
+      padding: 0 6px;
+      height: 22px;
+      font-size: 0.75rem;
+    }
+
+    .store-features-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      font-size: 0.82rem;
+      color: #A3A3A3;
+      margin-bottom: 10px;
+    }
+
+    .store-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .store-feature-item svg {
+      color: var(--color-green);
+      flex-shrink: 0;
+    }
+
+    .store-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-directions {
+      background: transparent;
+      border: 1px solid var(--color-primary-light);
+      color: var(--color-white) !important;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .btn-directions:hover {
+      background: var(--color-red-subtle);
+      border-color: var(--color-white);
+      transform: translateY(-2px);
     }
 
     /* ==========================================================================
@@ -1872,7 +1915,7 @@
       }
     }
 
-    /* Toast Notification (Feedback al agregar al carrito) */
+    /* Toast Notification */
     .toast-container {
       position: fixed;
       bottom: 24px;
@@ -1960,34 +2003,16 @@
           </div>
         </a>
 
-        <!-- Selector interactivo de tienda -->
-        <div class="store-selector-wrapper" id="storeSelectorWrap">
-          <button type="button" class="store-selector-btn" id="storeSelectorBtn" aria-haspopup="true" aria-expanded="false">
-            <span class="store-status-dot"></span>
-            <span id="currentStoreLabel">LES · 85 Delancey</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </button>
-
-          <div class="store-dropdown-menu" id="storeDropdownMenu">
-            <div class="store-dropdown-item selected" data-store="les" data-label="LES · 85 Delancey">
-              <span class="store-dropdown-name">Lower East Side (LES)</span>
-              <span class="store-dropdown-addr">85 Delancey St, Manhattan</span>
-            </div>
-            <div class="store-dropdown-item" data-store="mott" data-label="Mott Haven · Bronx">
-              <span class="store-dropdown-name">Mott Haven</span>
-              <span class="store-dropdown-addr">25 Bruckner Blvd, Bronx</span>
-            </div>
-            <div class="store-dropdown-item" data-store="yankee" data-label="Yankee Stadium · Bronx">
-              <span class="store-dropdown-name">Yankee Stadium</span>
-              <span class="store-dropdown-addr">860 River Ave, Bronx</span>
-            </div>
-          </div>
-        </div>
+        <!-- Badge de Ubicación Flagship única en Corona, Queens -->
+        <a href="#tiendas" class="header-store-badge" title="Ver ubicación en Corona, Queens">
+          <span class="store-status-dot"></span>
+          <span>Corona, Queens · 102-58 43rd Ave</span>
+        </a>
       </div>
 
       <!-- Menú principal Desktop -->
       <nav class="main-nav" aria-label="Navegación principal">
-        <a href="#tiendas" class="nav-link">Ubicaciones</a>
+        <a href="#tiendas" class="nav-link">Ubicación</a>
         <a href="#historia" class="nav-link">Nosotros</a>
         <a href="#educacion" class="nav-link">Recursos</a>
         <a href="#recompensas" class="nav-link">Recompensas</a>
@@ -2016,27 +2041,24 @@
 
   <!-- Menú Drawer Mobile -->
   <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#tiendas" class="mobile-nav-link" onclick="closeMobileMenu()">Ubicaciones</a>
+    <a href="#tiendas" class="mobile-nav-link" onclick="closeMobileMenu()">Ubicación & Transporte</a>
     <a href="#historia" class="mobile-nav-link" onclick="closeMobileMenu()">Nosotros</a>
     <a href="#educacion" class="mobile-nav-link" onclick="closeMobileMenu()">Recursos</a>
     <a href="#recompensas" class="mobile-nav-link" onclick="closeMobileMenu()">Recompensas</a>
     <a href="#faq" class="mobile-nav-link" onclick="closeMobileMenu()">Preguntas Frecuentes</a>
     <a href="#contacto" class="mobile-nav-link" onclick="closeMobileMenu()">Contacto</a>
 
-    <div class="mobile-store-picker">
-      <div class="mobile-store-title">Selecciona tu tienda:</div>
-      <div class="store-dropdown-item selected" data-store="les" onclick="selectStoreMobile('LES · 85 Delancey', 'les')">
-        <span class="store-dropdown-name">Lower East Side (LES)</span>
-        <span class="store-dropdown-addr">85 Delancey St, Manhattan</span>
-      </div>
-      <div class="store-dropdown-item" data-store="mott" onclick="selectStoreMobile('Mott Haven · Bronx', 'mott')">
-        <span class="store-dropdown-name">Mott Haven</span>
-        <span class="store-dropdown-addr">25 Bruckner Blvd, Bronx</span>
-      </div>
-      <div class="store-dropdown-item" data-store="yankee" onclick="selectStoreMobile('Yankee Stadium · Bronx', 'yankee')">
-        <span class="store-dropdown-name">Yankee Stadium</span>
-        <span class="store-dropdown-addr">860 River Ave, Bronx</span>
-      </div>
+    <div class="mobile-store-info-box">
+      <div class="mobile-store-title">📍 Nuestra Ubicación:</div>
+      <p style="font-size: 0.95rem; color: #FFFFFF; font-weight: 700;">Buddies Dispensary NYC</p>
+      <p style="font-size: 0.85rem; color: #D1D5DB; margin-top: 2px;">102-58 43rd Avenue, Corona, NY 11368</p>
+      <p style="font-size: 0.78rem; color: var(--color-green-light); font-weight: 700; margin-top: 6px;">
+        <span style="display:inline-block; width:7px; height:7px; background:#10B981; border-radius:50%; margin-right:4px;"></span>
+        Abierto hoy: 9:00 AM – 11:00 PM
+      </p>
+      <a href="https://maps.google.com/maps?q=102-58+43rd+Avenue,+Corona,+NY+11368" target="_blank" rel="noopener" class="btn-red" style="width: 100%; margin-top: 12px; padding: 8px 16px; font-size: 0.82rem;">
+        Abrir en Google Maps
+      </a>
     </div>
   </div>
 
@@ -2054,7 +2076,7 @@
             </span>
             <span class="hero-tag-item">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-light)" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              4.8★ en NYC
+              Corona, Queens • 4.8★
             </span>
           </div>
 
@@ -2063,7 +2085,7 @@
           </h1>
 
           <p class="hero-subtitle">
-            <strong class="text-white">Buddies Dispensary NYC</strong> es tu dispensaria legal en Manhattan y el Bronx, impulsando flores y extractos de cultivadores locales neoyorquinos con un firme compromiso hacia la justicia social y oportunidades reales.
+            <strong class="text-white">Buddies Dispensary NYC</strong> es tu dispensaria legal en <strong>Corona, Queens</strong> (102-58 43rd Ave), impulsando flores y extractos de cultivadores locales neoyorquinos con un firme compromiso hacia la justicia social y oportunidades reales.
           </p>
 
           <div class="hero-cta-wrapper">
@@ -2107,8 +2129,8 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
             </div>
             <div class="trust-text-box">
-              <h4>Delivery Disponible</h4>
-              <p>Envíos seguros en todo Manhattan y Bronx.</p>
+              <h4>Delivery en Queens y NYC</h4>
+              <p>Envíos seguros y discretos a tu domicilio.</p>
             </div>
           </div>
 
@@ -2117,8 +2139,8 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div class="trust-text-box">
-              <h4>Pickup el Mismo Día</h4>
-              <p>Tu pedido listo en mostrador en 15 minutos.</p>
+              <h4>Pickup en Corona</h4>
+              <p>Listo para retirar en mostrador en 15 minutos.</p>
             </div>
           </div>
 
@@ -2219,9 +2241,9 @@
     <section class="bestsellers-section" id="productos">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow">Top Ventas NYC</span>
+          <span class="section-eyebrow">Top Ventas Queens</span>
           <h2 class="section-title">Más Vendidos</h2>
-          <p class="section-subtitle">Los favoritos de nuestros clientes en Lower East Side, Mott Haven y Yankee Stadium.</p>
+          <p class="section-subtitle">Los favoritos de nuestra comunidad en Corona, Queens y Nueva York.</p>
         </div>
 
         <div class="product-grid">
@@ -2330,7 +2352,7 @@
         <div class="promo-banner-content">
           <div class="promo-text-group">
             <h3>15% de descuento en tu primera compra</h3>
-            <p>Usa el código <span class="promo-code-pill">BUDDIES15</span> al pagar online o en mostrador en cualquiera de nuestras tiendas.</p>
+            <p>Usa el código <span class="promo-code-pill">BUDDIES15</span> al pagar online o en mostrador en nuestra tienda de Corona, Queens.</p>
           </div>
           <a href="#newsletter" class="btn-red btn-promo-action">
             Regístrate
@@ -2359,7 +2381,7 @@
             <h2 class="story-title">De segundas oportunidades a la excelencia cannábica</h2>
             
             <p class="story-paragraph">
-              Fundada por neoyorquinos que vivieron en primera persona el impacto del sistema penal, Buddies Dispensary NYC nació para transformar la industria del cannabis en un motor de justicia y oportunidades reales. Hoy ofrecemos los mejores productos cultivados en el estado de Nueva York mientras creamos empleos dignos, educamos a nuestra comunidad y construimos un modelo comercial transparente, seguro e inclusivo.
+              Fundada por neoyorquinos que vivieron en primera persona el impacto del sistema penal, Buddies Dispensary NYC nació para transformar la industria del cannabis en un motor de justicia y oportunidades reales. Hoy ofrecemos los mejores productos cultivados en el estado de Nueva York mientras creamos empleos dignos, educamos a nuestra comunidad y construimos un modelo comercial transparente, seguro e inclusivo desde Corona, Queens.
             </p>
 
             <div class="story-stats-row">
@@ -2368,8 +2390,8 @@
                 <p>Capital Social</p>
               </div>
               <div class="story-stat-item">
-                <h4>3 Tiendas</h4>
-                <p>En Nueva York</p>
+                <h4>Corona, NY</h4>
+                <p>Tienda Insigne</p>
               </div>
               <div class="story-stat-item">
                 <h4>NYS OCM</h4>
@@ -2395,7 +2417,7 @@
         <div class="section-header">
           <span class="section-eyebrow">Buddies Club</span>
           <h2 class="section-title">Programa de Recompensas</h2>
-          <p class="section-subtitle">Gana puntos en cada compra y disfruta de beneficios exclusivos en todas nuestras sucursales.</p>
+          <p class="section-subtitle">Gana puntos en cada compra y disfruta de beneficios exclusivos en nuestra tienda y delivery.</p>
         </div>
 
         <div class="rewards-steps-grid">
@@ -2403,7 +2425,7 @@
           <div class="step-card">
             <div class="step-number">1</div>
             <h3 class="step-title">Compra</h3>
-            <p class="step-description">Acumula 1 punto por cada $1 gastado en compras en tienda o delivery en cualquiera de nuestras sucursales.</p>
+            <p class="step-description">Acumula 1 punto por cada $1 gastado en compras en tienda o delivery en nuestra sucursal de Corona.</p>
           </div>
 
           <!-- Paso 2 -->
@@ -2437,7 +2459,7 @@
         <div class="section-header">
           <span class="section-eyebrow">Opiniones Reales</span>
           <h2 class="section-title">Testimonios</h2>
-          <p class="section-subtitle">Lo que dicen nuestros clientes sobre su experiencia en Buddies Dispensary NYC.</p>
+          <p class="section-subtitle">Lo que dicen nuestros clientes sobre su experiencia en Buddies Dispensary NYC en Corona, Queens.</p>
         </div>
 
         <div class="testimonials-grid">
@@ -2447,14 +2469,14 @@
             <div>
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-quote">
-                "La atención en la tienda de Delancey St es incomparable. Los budtenders de Buddies saben exactamente qué recomendar según tus gustos y el ambiente es súper moderno y acogedor."
+                "La atención en la tienda de 43rd Ave en Corona es excelente. Queda a pasos de la estación del tren 7 en 103rd St y los budtenders saben exactamente qué recomendarte."
               </p>
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">CM</div>
               <div class="author-info">
                 <h5>Carlos M.</h5>
-                <p>Cliente en Lower East Side (LES)</p>
+                <p>Cliente en Corona, Queens</p>
               </div>
             </div>
           </div>
@@ -2464,14 +2486,14 @@
             <div>
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-quote">
-                "El delivery en Mott Haven llegó en menos de 45 minutos. Todo perfectamente sellado con certificados de laboratorio. Me encanta apoyar a Buddies Dispensary por su misión social tan real."
+                "El delivery en Queens llegó en menos de 45 minutos. Todo perfectamente sellado con certificados de laboratorio. Me encanta apoyar a Buddies Dispensary por su misión social tan real."
               </p>
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">DR</div>
               <div class="author-info">
                 <h5>Devon R.</h5>
-                <p>Cliente en Mott Haven (Bronx)</p>
+                <p>Cliente en Queens, NY</p>
               </div>
             </div>
           </div>
@@ -2481,14 +2503,14 @@
             <div>
               <div class="testimonial-stars">★★★★★</div>
               <p class="testimonial-quote">
-                "La ubicación junto a Yankee Stadium es genial. Tienen la mejor selección de pre-rolls y flores frescas de cultivadores de Upstate. ¡Mi dispensaria favorita antes de ir al estadio!"
+                "Excelente ubicación cerca de Flushing Meadows y Citi Field. Tienen la mejor selección de pre-rolls y flores frescas de cultivadores de NY. ¡La recogida exprés te ahorra muchísimo tiempo!"
               </p>
             </div>
             <div class="testimonial-author">
               <div class="author-avatar">ST</div>
               <div class="author-info">
                 <h5>Sofia T.</h5>
-                <p>Cliente en Yankee Stadium (Bronx)</p>
+                <p>Cliente en Corona Plaza</p>
               </div>
             </div>
           </div>
@@ -2498,112 +2520,108 @@
     </section>
 
     <!-- ==========================================================================
-         10. NUESTRAS TIENDAS
+         10. NUESTRA TIENDA (UBICACIÓN ÚNICA: 102-58 43RD AVE, CORONA NY 11368)
          ========================================================================== -->
     <section class="stores-section" id="tiendas">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow">Presencia en NYC</span>
-          <h2 class="section-title">Nuestras Tiendas</h2>
-          <p class="section-subtitle">Tres ubicaciones estratégicas en Manhattan y el Bronx para brindarte la mejor experiencia.</p>
+          <span class="section-eyebrow green-badge">Visítanos en Queens</span>
+          <h2 class="section-title">Nuestra Ubicación</h2>
+          <p class="section-subtitle">Dispensaria legal insigne en el corazón de Corona, Queens. Fácil acceso en metro, autobús o vehículo.</p>
         </div>
 
-        <div class="stores-grid">
+        <div class="single-store-card">
           
-          <!-- Tienda 1: Lower East Side -->
-          <div class="store-card" id="storeCard-les">
-            <div class="store-card-map-header">
-              <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=600&q=80" alt="Tienda Buddies Lower East Side" loading="lazy">
-              <span class="store-status-badge">
-                <span class="store-status-dot"></span> Abierto hoy
-              </span>
-            </div>
-            <div class="store-card-body">
-              <div>
-                <h3 class="store-card-title">Lower East Side (LES)</h3>
-                <ul class="store-info-list">
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>85 Delancey St, New York, NY 10002</span>
-                  </li>
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span>Lun - Dom: 9:00 AM – 11:00 PM</span>
-                  </li>
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
-                    <span>Metro: F, M, J, Z (Delancey / Essex St)</span>
-                  </li>
-                </ul>
-              </div>
-              <a href="#productos" class="btn-red" style="width: 100%;">
-                Ver tienda
-              </a>
-            </div>
+          <!-- Lado Izquierdo: Mapa Interactivo Embebido -->
+          <div class="store-map-side">
+            <span class="store-map-floating-badge">
+              <span class="store-status-dot"></span> Abierto hoy: 9:00 AM – 11:00 PM
+            </span>
+            <iframe 
+              class="store-map-iframe"
+              src="https://maps.google.com/maps?q=102-58+43rd+Avenue,+Corona,+NY+11368&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa de Buddies Dispensary NYC en Corona, Queens">
+            </iframe>
           </div>
 
-          <!-- Tienda 2: Mott Haven -->
-          <div class="store-card" id="storeCard-mott">
-            <div class="store-card-map-header">
-              <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=600&q=80" alt="Tienda Buddies Mott Haven Bronx" loading="lazy">
-              <span class="store-status-badge">
-                <span class="store-status-dot"></span> Abierto hoy
-              </span>
-            </div>
-            <div class="store-card-body">
-              <div>
-                <h3 class="store-card-title">Mott Haven</h3>
-                <ul class="store-info-list">
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>25 Bruckner Blvd, Bronx, NY 10454</span>
-                  </li>
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span>Lun - Sáb: 10:00 AM – 10:00 PM | Dom: 11:00 AM – 8:00 PM</span>
-                  </li>
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
-                    <span>Metro: Línea 6 (3rd Ave - 138th St)</span>
-                  </li>
-                </ul>
+          <!-- Lado Derecho: Información de Ubicación y Transporte Público -->
+          <div class="store-info-side">
+            <div>
+              <div class="store-headline-group">
+                <h3>Buddies Dispensary NYC</h3>
+                <div class="store-address-highlight">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>102-58 43rd Avenue, Corona, NY 11368</span>
+                </div>
               </div>
-              <a href="#productos" class="btn-red" style="width: 100%;">
-                Ver tienda
-              </a>
-            </div>
-          </div>
 
-          <!-- Tienda 3: Yankee Stadium -->
-          <div class="store-card" id="storeCard-yankee">
-            <div class="store-card-map-header">
-              <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80" alt="Tienda Buddies Yankee Stadium" loading="lazy">
-              <span class="store-status-badge">
-                <span class="store-status-dot"></span> Abierto hoy
-              </span>
-            </div>
-            <div class="store-card-body">
-              <div>
-                <h3 class="store-card-title">Yankee Stadium</h3>
-                <ul class="store-info-list">
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>860 River Ave, Bronx, NY 10451</span>
+              <p class="store-description-text">
+                Nuestra dispensaria principal se encuentra estratégicamente ubicada en el vibrante vecindario de <strong>Corona, Queens</strong>, a solo 1 cuadra de <em>Corona Plaza</em> y a pocos minutos de <em>Flushing Meadows Corona Park</em> y <em>Citi Field</em>. Un espacio moderno, seguro, luminoso y accesible con budtenders bilingües listos para asesorarte.
+              </p>
+
+              <!-- Bloque de Transporte Público -->
+              <div class="transit-block">
+                <div class="transit-block-title">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+                  Transporte Público Cercano (MTA):
+                </div>
+                <ul class="transit-list">
+                  <li class="transit-item">
+                    <span class="transit-badge">7</span>
+                    <div>
+                      <strong>Metro (Tren 7):</strong> Estación <strong>103rd St - Corona Plaza</strong> (a 2 minutos a pie / 150 metros) y estación <strong>Junction Blvd</strong> (servicio local y exprés).
+                    </div>
                   </li>
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span>Lun - Dom: 10:00 AM – 10:00 PM</span>
+                  <li class="transit-item">
+                    <span class="transit-badge transit-badge-bus">BUS</span>
+                    <div>
+                      <strong>Autobuses MTA:</strong> Líneas <strong>Q23</strong> (por 102nd/104th St), <strong>Q58</strong> (Corona Ave) y <strong>Q72</strong> (conexión directa con Junction Blvd y Aeropuerto LaGuardia).
+                    </div>
                   </li>
-                  <li class="store-info-item">
-                    <svg class="store-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
-                    <span>Metro: Líneas 4, B, D (161st St - Yankee Stadium)</span>
+                  <li class="transit-item">
+                    <span class="transit-badge transit-badge-car">AUTO</span>
+                    <div>
+                      <strong>Acceso Vehicular:</strong> Conexión inmediata desde <strong>Grand Central Parkway</strong> (Salida Roosevelt Ave) y <strong>Long Island Expressway (I-495)</strong>.
+                    </div>
                   </li>
                 </ul>
               </div>
-              <a href="#productos" class="btn-red" style="width: 100%;">
-                Ver tienda
+
+              <!-- Características en tienda -->
+              <div class="store-features-row">
+                <div class="store-feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Retiro Exprés en 15 min</span>
+                </div>
+                <div class="store-feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Delivery en todo Queens & NYC</span>
+                </div>
+                <div class="store-feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Cajero ATM en tienda</span>
+                </div>
+                <div class="store-feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Atención en Español e Inglés</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="store-actions-row">
+              <a href="https://maps.google.com/maps?q=102-58+43rd+Avenue,+Corona,+NY+11368" target="_blank" rel="noopener" class="btn-red">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+                Cómo llegar (Google Maps)
+              </a>
+              <a href="#productos" class="btn-directions">
+                Ver menú online
               </a>
             </div>
+
           </div>
 
         </div>
@@ -2715,7 +2733,7 @@
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                Entregamos directamente en domicilios particulares en todo Manhattan y el Bronx mediante mensajería segura y discreta. Al ordenar en nuestro menú online, ingresas tu dirección y recibirás actualizaciones por SMS. El titular de la compra debe recibir el pedido y presentar su identificación 21+.
+                Entregamos directamente en domicilios particulares en Queens, Manhattan y Brooklyn mediante mensajería segura y discreta. Al ordenar en nuestro menú online, ingresas tu dirección y recibirás actualizaciones por SMS. El titular de la compra debe recibir el pedido y presentar su identificación 21+.
               </div>
             </div>
           </div>
@@ -2741,7 +2759,7 @@
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                Aceptamos efectivo (contamos con cajeros automáticos ATM seguros dentro de cada sucursal) y pagos mediante tarjeta de débito con PIN (PIN-debit). Debido a regulaciones bancarias federales, las tarjetas de crédito tradicionales aún no están permitidas.
+                Aceptamos efectivo (contamos con cajeros automáticos ATM seguros dentro de nuestra sucursal de Corona) y pagos mediante tarjeta de débito con PIN (PIN-debit). Debido a regulaciones bancarias federales, las tarjetas de crédito tradicionales aún no están permitidas.
               </div>
             </div>
           </div>
@@ -2754,7 +2772,7 @@
             </button>
             <div class="faq-content">
               <div class="faq-content-inner">
-                Nuestra tienda de Lower East Side opera de 9:00 AM a 11:00 PM los 7 días de la semana. Las sucursales de Mott Haven y Yankee Stadium abren a las 10:00 AM. Puedes pedir online para pickup exprés y tu orden estará lista en menos de 15 minutos en el mostrador dedicado.
+                Nuestra tienda en 102-58 43rd Avenue (Corona, Queens) opera de 9:00 AM a 11:00 PM los 7 días de la semana. Puedes pedir online para pickup exprés y tu orden estará lista en menos de 15 minutos en el mostrador dedicado.
               </div>
             </div>
           </div>
@@ -2784,7 +2802,7 @@
         <div class="newsletter-card">
           <span class="section-eyebrow green-badge">Comunidad Buddies</span>
           <h3>Entérate de las Novedades</h3>
-          <p>Suscríbete para recibir lanzamientos de cosechas exclusivas, eventos comunitarios y promociones especiales en tu tienda más cercana de Buddies Dispensary NYC.</p>
+          <p>Suscríbete para recibir lanzamientos de cosechas exclusivas, eventos comunitarios en Corona y promociones especiales de Buddies Dispensary NYC.</p>
           
           <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
             <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Tu correo electrónico..." required aria-label="Correo electrónico para ofertas">
@@ -2819,7 +2837,7 @@
           </div>
           <p class="footer-tagline">"You get New York's finest. We get second chances."</p>
           <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px;">
-            La primera dispensaria legal de cannabis en Manhattan y Bronx con enfoque en justicia social, calidad artesanal neoyorquina y empoderamiento comunitario.
+            Dispensaria legal de cannabis en Corona, Queens con enfoque en justicia social, calidad artesanal neoyorquina y empoderamiento comunitario.
           </p>
           <div class="footer-social-links">
             <a href="#" class="social-icon-btn" aria-label="Instagram">
@@ -2847,13 +2865,13 @@
           </ul>
         </div>
 
-        <!-- Columna 3: Ubicaciones -->
+        <!-- Columna 3: Ubicación y Servicios -->
         <div>
-          <h5 class="footer-col-title">Ubicaciones</h5>
+          <h5 class="footer-col-title">Ubicación & Tienda</h5>
           <ul class="footer-links-list">
-            <li><a href="#storeCard-les">Lower East Side (Manhattan)</a></li>
-            <li><a href="#storeCard-mott">Mott Haven (Bronx)</a></li>
-            <li><a href="#storeCard-yankee">Yankee Stadium (Bronx)</a></li>
+            <li><a href="#tiendas">102-58 43rd Ave, Corona, NY</a></li>
+            <li><a href="#tiendas">Cerca del Tren 7 (103rd St)</a></li>
+            <li><a href="#tiendas">A pasos de Corona Plaza</a></li>
             <li><a href="#productos">Servicio de Delivery</a></li>
             <li><a href="#productos">Retiro Exprés (Pickup)</a></li>
           </ul>
@@ -2864,9 +2882,9 @@
           <h5 class="footer-col-title">Contacto</h5>
           <ul class="footer-links-list">
             <li>Email: <a href="mailto:hola@buddiesdispensarynyc.com">hola@buddiesdispensarynyc.com</a></li>
-            <li>Tel: +1 (212) 555-BUDS</li>
-            <li>Soporte: Lun - Dom 9am - 10pm</li>
-            <li>85 Delancey St, New York, NY</li>
+            <li>Tel: +1 (718) 555-BUDS</li>
+            <li>Horario: Lun - Dom 9am - 11pm</li>
+            <li>102-58 43rd Ave, Corona, NY 11368</li>
           </ul>
         </div>
 
@@ -2875,9 +2893,8 @@
       <!-- Licencias y Avisos Legales Obligatorios (NYS OCM) -->
       <div class="footer-legal-block">
         <div class="license-tags-container">
-          <span class="license-pill">Licencia NYS OCM Retail #CAURD-2023-00018 (LES)</span>
-          <span class="license-pill">Licencia NYS OCM #CAURD-2023-00042 (Mott Haven)</span>
-          <span class="license-pill">Licencia NYS OCM #CAURD-2024-00091 (Yankee Stadium)</span>
+          <span class="license-pill">Licencia NYS OCM Retail #CAURD-2023-00018 (Corona, Queens)</span>
+          <span class="license-pill">NYS Office of Cannabis Management Licensed Dispensary</span>
         </div>
 
         <p class="legal-warning-text">
@@ -2938,47 +2955,7 @@
       });
 
       // ------------------------------------------------------------------------
-      // 2. Selector de Tienda (Header Dropdown)
-      // ------------------------------------------------------------------------
-      const storeBtn = document.getElementById('storeSelectorBtn');
-      const storeMenu = document.getElementById('storeDropdownMenu');
-      const storeLabel = document.getElementById('currentStoreLabel');
-      const storeItems = document.querySelectorAll('.store-dropdown-item');
-
-      if (storeBtn && storeMenu) {
-        storeBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const expanded = storeBtn.getAttribute('aria-expanded') === 'true';
-          storeBtn.setAttribute('aria-expanded', !expanded);
-          storeMenu.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!storeMenu.contains(e.target) && e.target !== storeBtn) {
-            storeMenu.classList.remove('active');
-            storeBtn.setAttribute('aria-expanded', 'false');
-          }
-        });
-
-        storeItems.forEach(item => {
-          item.addEventListener('click', () => {
-            const label = item.getAttribute('data-label');
-            const storeId = item.getAttribute('data-store');
-            
-            storeLabel.textContent = label;
-            storeItems.forEach(i => i.classList.remove('selected'));
-            item.classList.add('selected');
-            storeMenu.classList.remove('active');
-            storeBtn.setAttribute('aria-expanded', 'false');
-
-            highlightStoreSection(storeId);
-            showToast(`📍 Tienda activa cambiada a: ${label}`);
-          });
-        });
-      }
-
-      // ------------------------------------------------------------------------
-      // 3. Menú Mobile Drawer
+      // 2. Menú Mobile Drawer
       // ------------------------------------------------------------------------
       const mobileToggle = document.getElementById('mobileMenuToggle');
       const mobileDrawer = document.getElementById('mobileDrawer');
@@ -2997,7 +2974,7 @@
       }
 
       // ------------------------------------------------------------------------
-      // 4. FAQ Acordeón
+      // 3. FAQ Acordeón
       // ------------------------------------------------------------------------
       const faqItems = document.querySelectorAll('.faq-item');
       faqItems.forEach(item => {
@@ -3037,22 +3014,6 @@
       if (mobileDrawer) mobileDrawer.classList.remove('open');
       if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
-    }
-
-    function selectStoreMobile(label, storeId) {
-      const storeLabel = document.getElementById('currentStoreLabel');
-      if (storeLabel) storeLabel.textContent = label;
-      closeMobileMenu();
-      highlightStoreSection(storeId);
-      showToast(`📍 Tienda seleccionada: ${label}`);
-    }
-
-    function highlightStoreSection(storeId) {
-      document.querySelectorAll('.store-card').forEach(card => card.classList.remove('highlighted'));
-      const targetCard = document.getElementById(`storeCard-${storeId}`);
-      if (targetCard) {
-        targetCard.classList.add('highlighted');
-      }
     }
 
     // Carrito y Notificaciones Toast
