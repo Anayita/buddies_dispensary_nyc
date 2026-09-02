@@ -224,6 +224,43 @@
       gap: 12px;
     }
 
+    /* Selector de Idioma (ES / EN) */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--color-border);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #9E9E9E;
+      cursor: pointer;
+      padding: 2px 4px;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      color: var(--color-white);
+    }
+
+    .lang-btn.active {
+      color: var(--color-primary-light);
+      text-shadow: 0 0 8px rgba(217, 4, 41, 0.6);
+    }
+
+    .lang-divider {
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.75rem;
+    }
+
     /* ==========================================================================
        MODAL DE VERIFICACIÓN DE EDAD 21+ (BLOQUEANTE)
        ========================================================================== */
@@ -336,7 +373,7 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(11, 11, 11, 0.92);
+      background: rgba(11, 11, 11, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--color-border);
@@ -417,7 +454,7 @@
       align-self: flex-start;
     }
 
-    /* Badge de Ubicación única en Header */
+    /* Badge de Ubicación en Header */
     .header-store-badge {
       display: none;
       align-items: center;
@@ -431,7 +468,7 @@
       font-weight: 600;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1080px) {
       .header-store-badge {
         display: flex;
       }
@@ -450,11 +487,11 @@
       display: none;
     }
 
-    @media (min-width: 900px) {
+    @media (min-width: 960px) {
       .main-nav {
         display: flex;
         align-items: center;
-        gap: 24px;
+        gap: 22px;
       }
     }
 
@@ -471,7 +508,7 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     /* Botón Carrito */
@@ -480,8 +517,8 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--color-border);
       color: var(--color-white);
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -521,7 +558,7 @@
       padding: 6px;
     }
 
-    @media (min-width: 900px) {
+    @media (min-width: 960px) {
       .mobile-menu-toggle {
         display: none;
       }
@@ -575,25 +612,57 @@
     }
 
     /* ==========================================================================
-       2. HERO SECTION
+       2. HERO SECTION — FONDO ELEGANTE CON EL LOGO OFICIAL BUDDIES
        ========================================================================== */
     .hero-section {
       position: relative;
-      min-height: 90vh;
+      min-height: 88vh;
       display: flex;
       align-items: center;
       padding: 130px 0 70px 0;
       background: linear-gradient(180deg, rgba(11, 11, 11, 0.85) 0%, rgba(11, 11, 11, 0.98) 100%),
-                  radial-gradient(circle at 80% 20%, rgba(217, 4, 41, 0.35) 0%, transparent 55%),
-                  radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.25) 0%, transparent 50%),
-                  url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+                  radial-gradient(circle at 75% 35%, rgba(217, 4, 41, 0.32) 0%, transparent 55%),
+                  radial-gradient(circle at 15% 70%, rgba(16, 185, 129, 0.22) 0%, transparent 50%),
+                  #0B0B0B;
       overflow: hidden;
     }
 
-    .hero-content {
-      max-width: 840px;
+    /* Watermark de fondo con el logo de Buddies */
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%) rotate(8deg);
+      width: 600px;
+      height: 600px;
+      background-image: url('images/buddies_logo.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.06;
+      pointer-events: none;
+      filter: blur(1px) drop-shadow(0 0 40px rgba(217, 4, 41, 0.5));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
       position: relative;
       z-index: 2;
+    }
+
+    @media (min-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 56px;
+      }
+    }
+
+    .hero-content {
+      max-width: 700px;
     }
 
     .hero-tags {
@@ -631,22 +700,22 @@
 
     @media (min-width: 768px) {
       .hero-title {
-        font-size: 3.8rem;
+        font-size: 3.6rem;
       }
     }
 
     @media (min-width: 1200px) {
       .hero-title {
-        font-size: 4.4rem;
+        font-size: 4.1rem;
       }
     }
 
     .hero-subtitle {
-      font-size: 1.15rem;
-      line-height: 1.5;
+      font-size: 1.12rem;
+      line-height: 1.55;
       color: var(--color-text-subtle);
       margin-bottom: 34px;
-      max-width: 680px;
+      max-width: 620px;
     }
 
     .hero-cta-wrapper {
@@ -659,6 +728,82 @@
       font-size: 1.1rem;
       padding: 16px 42px;
       border-radius: var(--radius-pill);
+    }
+
+    /* Tarjeta Visual de Logo Destacado en Hero */
+    .hero-visual-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at center, rgba(217, 4, 41, 0.25) 0%, rgba(20, 20, 20, 0.95) 75%);
+      border: 1px solid rgba(217, 4, 41, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 38px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(217, 4, 41, 0.3);
+      text-align: center;
+      animation: floatSubtle 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatSubtle {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .hero-big-logo {
+      width: 170px;
+      height: 170px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #FFFFFF;
+      padding: 10px;
+      box-shadow: 0 0 35px rgba(217, 4, 41, 0.65), 0 0 15px rgba(16, 185, 129, 0.4);
+      border: 3px solid var(--color-primary-light);
+      margin-bottom: 20px;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-visual-card:hover .hero-big-logo {
+      transform: scale(1.06) rotate(-3deg);
+    }
+
+    .hero-visual-title {
+      font-size: 1.4rem;
+      color: var(--color-white);
+      margin-bottom: 4px;
+    }
+
+    .hero-visual-tag {
+      font-size: 0.85rem;
+      color: var(--color-green-light);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero-pills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .hero-pill-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(11, 11, 11, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      color: #E2E2E2;
+      text-align: left;
+    }
+
+    .hero-pill-icon {
+      color: var(--color-primary-light);
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
@@ -819,7 +964,6 @@
       font-weight: 700;
     }
 
-    /* Imágenes de fondo para categorías */
     .cat-bg-flores::before { background-image: url('https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=600&q=80'); }
     .cat-bg-prerolls::before { background-image: url('images/lifter_prerolls_5pack.jpg'); background-position: center 30%; }
     .cat-bg-concentrados::before { background-image: url('https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80'); }
@@ -1460,7 +1604,7 @@
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      background: #B933AD; /* Color oficial línea 7 MTA */
+      background: #B933AD;
       color: #fff;
       font-weight: 800;
       font-size: 0.8rem;
@@ -1468,7 +1612,7 @@
     }
 
     .transit-badge-bus {
-      background: #0039A6; /* MTA Bus blue */
+      background: #0039A6;
       border-radius: 4px;
       width: auto;
       padding: 0 6px;
@@ -1531,7 +1675,7 @@
     }
 
     /* ==========================================================================
-       11. EDUCACIÓN CANNÁBICA
+       11. EDUCACIÓN CANNÁBICA (DESCRIPCIONES MEJORADAS)
        ========================================================================== */
     .education-section {
       padding: 90px 0;
@@ -1610,9 +1754,7 @@
       font-size: 0.88rem;
       color: var(--color-text-muted);
       margin-bottom: 16px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.5;
     }
 
     .article-link {
@@ -1958,19 +2100,19 @@
       <div class="age-modal-logo-wrap">
         <img src="images/buddies_logo.jpg" alt="Buddies NYC Logo" class="modal-logo-img">
       </div>
-      <h2 id="ageModalTitle">Verificación de Edad</h2>
-      <p>Bienvenido a <strong class="text-red">Buddies Dispensary NYC</strong>. Para ingresar a nuestro sitio web y comprar productos de cannabis en el Estado de Nueva York, debes tener 21 años o más.</p>
+      <h2 id="ageModalTitle" data-i18n="age_title">Verificación de Edad</h2>
+      <p data-i18n="age_desc">Bienvenido a <strong class="text-red">Buddies Dispensary NYC</strong>. Para ingresar a nuestro sitio web y comprar productos de cannabis en el Estado de Nueva York, debes tener 21 años o más.</p>
       
       <div class="age-modal-actions">
-        <button type="button" class="btn-red" id="btnAgeConfirm">
+        <button type="button" class="btn-red" id="btnAgeConfirm" data-i18n="age_confirm">
           Sí, tengo 21 años o más
         </button>
-        <button type="button" class="btn-exit-age" id="btnAgeDeny">
+        <button type="button" class="btn-exit-age" id="btnAgeDeny" data-i18n="age_deny">
           No, soy menor de 21 años
         </button>
       </div>
       
-      <div class="age-modal-legal">
+      <div class="age-modal-legal" data-i18n="age_legal">
         Dispensaria con licencia oficial del Estado de Nueva York (<span class="text-green">NYS OCM</span>). El consumo de cannabis está estrictamente regulado para mayores de 21 años.
       </div>
     </div>
@@ -1978,12 +2120,12 @@
     <!-- Pantalla informativa si el usuario es menor de 21 -->
     <div class="age-modal-card age-rejected-view" id="ageModalRejected">
       <div class="age-modal-badge" style="border-color: #EF4444; color: #EF4444;">✕</div>
-      <h2>Acceso Restringido</h2>
-      <p>Lo sentimos. De acuerdo con las leyes del Estado de Nueva York (NYS OCM), debes tener al menos 21 años para ver el menú y adquirir productos de cannabis.</p>
-      <div class="hopeline-box" style="text-align: left; margin-bottom: 20px;">
+      <h2 data-i18n="age_rejected_title">Acceso Restringido</h2>
+      <p data-i18n="age_rejected_desc">Lo sentimos. De acuerdo con las leyes del Estado de Nueva York (NYS OCM), debes tener al menos 21 años para ver el menú y adquirir productos de cannabis.</p>
+      <div class="hopeline-box" style="text-align: left; margin-bottom: 20px;" data-i18n="age_rejected_box">
         Para recursos y orientación para jóvenes y familias, visita <strong>cannabis.ny.gov</strong> o llama a la línea de ayuda <strong>1-877-8-HOPENY</strong>.
       </div>
-      <button type="button" class="btn-red" onclick="window.location.href='https://cannabis.ny.gov'">
+      <button type="button" class="btn-red" onclick="window.location.href='https://cannabis.ny.gov'" data-i18n="age_rejected_btn">
         Ir al sitio oficial NYS OCM
       </button>
     </div>
@@ -2003,31 +2145,38 @@
           </div>
         </a>
 
-        <!-- Badge de Ubicación Flagship única en Corona, Queens -->
+        <!-- Badge de Ubicación Flagship en Corona, Queens -->
         <a href="#tiendas" class="header-store-badge" title="Ver ubicación en Corona, Queens">
           <span class="store-status-dot"></span>
-          <span>Corona, Queens · 102-58 43rd Ave</span>
+          <span data-i18n="header_store_badge">Corona, Queens · 102-58 43rd Ave</span>
         </a>
       </div>
 
       <!-- Menú principal Desktop -->
       <nav class="main-nav" aria-label="Navegación principal">
-        <a href="#tiendas" class="nav-link">Ubicación</a>
-        <a href="#historia" class="nav-link">Nosotros</a>
-        <a href="#educacion" class="nav-link">Recursos</a>
-        <a href="#recompensas" class="nav-link">Recompensas</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="#tiendas" class="nav-link" data-i18n="nav_location">Ubicación</a>
+        <a href="#historia" class="nav-link" data-i18n="nav_about">Nosotros</a>
+        <a href="#educacion" class="nav-link" data-i18n="nav_education">Educación</a>
+        <a href="#recompensas" class="nav-link" data-i18n="nav_rewards">Recompensas</a>
+        <a href="#contacto" class="nav-link" data-i18n="nav_contact">Contacto</a>
       </nav>
 
       <div class="header-right">
+        <!-- Selector de Idioma (ES / EN) -->
+        <div class="lang-switcher" aria-label="Selector de idioma / Language selector">
+          <button type="button" class="lang-btn active" id="langBtnEs" onclick="setLanguage('es')">ES</button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" id="langBtnEn" onclick="setLanguage('en')">EN</button>
+        </div>
+
         <!-- Botón carrito -->
         <button type="button" class="cart-btn" id="cartBtn" aria-label="Ver carrito">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
           <span class="cart-count" id="cartCountBadge">0</span>
         </button>
 
-        <!-- CTA "Ordenar ahora" en Rojo destacado -->
-        <a href="#productos" class="btn-red" id="btnHeaderOrder">
+        <!-- CTA "Ordenar ahora" -->
+        <a href="#productos" class="btn-red" id="btnHeaderOrder" data-i18n="btn_order_now">
           Ordenar ahora
         </a>
 
@@ -2041,22 +2190,29 @@
 
   <!-- Menú Drawer Mobile -->
   <div class="mobile-drawer" id="mobileDrawer">
-    <a href="#tiendas" class="mobile-nav-link" onclick="closeMobileMenu()">Ubicación & Transporte</a>
-    <a href="#historia" class="mobile-nav-link" onclick="closeMobileMenu()">Nosotros</a>
-    <a href="#educacion" class="mobile-nav-link" onclick="closeMobileMenu()">Recursos</a>
-    <a href="#recompensas" class="mobile-nav-link" onclick="closeMobileMenu()">Recompensas</a>
-    <a href="#faq" class="mobile-nav-link" onclick="closeMobileMenu()">Preguntas Frecuentes</a>
-    <a href="#contacto" class="mobile-nav-link" onclick="closeMobileMenu()">Contacto</a>
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
+      <div class="lang-switcher">
+        <button type="button" class="lang-btn active" onclick="setLanguage('es')">ES</button>
+        <span class="lang-divider">|</span>
+        <button type="button" class="lang-btn" onclick="setLanguage('en')">EN</button>
+      </div>
+    </div>
+    <a href="#tiendas" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav_location_transit">Ubicación & Transporte</a>
+    <a href="#historia" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav_about">Nosotros</a>
+    <a href="#educacion" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav_education">Educación</a>
+    <a href="#recompensas" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav_rewards">Recompensas</a>
+    <a href="#faq" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav_faq">Preguntas Frecuentes</a>
+    <a href="#contacto" class="mobile-nav-link" onclick="closeMobileMenu()" data-i18n="nav_contact">Contacto</a>
 
     <div class="mobile-store-info-box">
-      <div class="mobile-store-title">📍 Nuestra Ubicación:</div>
+      <div class="mobile-store-title" data-i18n="mobile_our_location">📍 Nuestra Ubicación:</div>
       <p style="font-size: 0.95rem; color: #FFFFFF; font-weight: 700;">Buddies Dispensary NYC</p>
       <p style="font-size: 0.85rem; color: #D1D5DB; margin-top: 2px;">102-58 43rd Avenue, Corona, NY 11368</p>
-      <p style="font-size: 0.78rem; color: var(--color-green-light); font-weight: 700; margin-top: 6px;">
+      <p style="font-size: 0.78rem; color: var(--color-green-light); font-weight: 700; margin-top: 6px;" data-i18n="store_open_today_text">
         <span style="display:inline-block; width:7px; height:7px; background:#10B981; border-radius:50%; margin-right:4px;"></span>
         Abierto hoy: 9:00 AM – 11:00 PM
       </p>
-      <a href="https://maps.google.com/maps?q=102-58+43rd+Avenue,+Corona,+NY+11368" target="_blank" rel="noopener" class="btn-red" style="width: 100%; margin-top: 12px; padding: 8px 16px; font-size: 0.82rem;">
+      <a href="https://maps.google.com/maps?q=102-58+43rd+Avenue,+Corona,+NY+11368" target="_blank" rel="noopener" class="btn-red" style="width: 100%; margin-top: 12px; padding: 8px 16px; font-size: 0.82rem;" data-i18n="btn_open_maps">
         Abrir en Google Maps
       </a>
     </div>
@@ -2064,35 +2220,62 @@
 
   <main>
     <!-- ==========================================================================
-         2. HERO SECTION
+         2. HERO SECTION — LOGO OFICIAL BUDDIES EN EL FONDO Y DESTACADO
          ========================================================================== -->
     <section class="hero-section" id="hero">
       <div class="container">
-        <div class="hero-content">
-          <div class="hero-tags">
-            <span class="hero-tag-item green-accent">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Licencia Oficial NYS OCM
-            </span>
-            <span class="hero-tag-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-light)" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              Corona, Queens • 4.8★
-            </span>
+        <div class="hero-grid">
+          
+          <!-- Columna Izquierda: Mensaje Central y Call To Action -->
+          <div class="hero-content">
+            <div class="hero-tags">
+              <span class="hero-tag-item green-accent">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="hero_tag_ocm">Licencia Oficial NYS OCM</span>
+              </span>
+              <span class="hero-tag-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-light)" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span data-i18n="hero_tag_queens">Corona, Queens • 4.8★</span>
+              </span>
+            </div>
+
+            <h1 class="hero-title" data-i18n="hero_title">
+              Obtén lo mejor de Nueva York. <span class="text-red">Nosotros obtenemos segundas oportunidades.</span>
+            </h1>
+
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
+              <strong class="text-white">Buddies Dispensary NYC</strong> es tu dispensaria legal en <strong>Corona, Queens</strong> (102-58 43rd Ave), ofreciendo flores y extractos cultivados por productores locales de NY con justicia social y oportunidades reales.
+            </p>
+
+            <div class="hero-cta-wrapper">
+              <a href="#productos" class="btn-red btn-hero" data-i18n="btn_view_menu">
+                Ver menú
+              </a>
+            </div>
           </div>
 
-          <h1 class="hero-title">
-            Obtén lo mejor de Nueva York. <span class="text-red">Nosotros obtenemos segundas oportunidades.</span>
-          </h1>
-
-          <p class="hero-subtitle">
-            <strong class="text-white">Buddies Dispensary NYC</strong> es tu dispensaria legal en <strong>Corona, Queens</strong> (102-58 43rd Ave), impulsando flores y extractos de cultivadores locales neoyorquinos con un firme compromiso hacia la justicia social y oportunidades reales.
-          </p>
-
-          <div class="hero-cta-wrapper">
-            <a href="#productos" class="btn-red btn-hero">
-              Ver menú
-            </a>
+          <!-- Columna Derecha: Tarjeta Emblema Oficial Buddies -->
+          <div class="hero-visual-card">
+            <img src="images/buddies_logo.jpg" alt="Buddies Dispensary Big Apple Emblem Logo" class="hero-big-logo">
+            <h2 class="hero-visual-title">BUDDIES <span class="text-red">NYC</span></h2>
+            <div class="hero-visual-tag" data-i18n="hero_emblem_tag">DISPENSARIA OFICIAL EN QUEENS</div>
+            
+            <div class="hero-pills-list">
+              <div class="hero-pill-item">
+                <svg class="hero-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span data-i18n="hero_pill_1">100% Legal & Regulado por el Estado de NY</span>
+              </div>
+              <div class="hero-pill-item">
+                <svg class="hero-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span data-i18n="hero_pill_2">Pickup en 15 Minutos o Delivery a Domicilio</span>
+              </div>
+              <div class="hero-pill-item">
+                <svg class="hero-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span data-i18n="hero_pill_3">102-58 43rd Ave (Junto al Tren 7 en Corona)</span>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -2109,8 +2292,8 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
             </div>
             <div class="trust-text-box">
-              <h4>Licencia Estatal Verificada</h4>
-              <p>Dispensaria 100% legal autorizada por NYS OCM.</p>
+              <h4 data-i18n="trust_item1_title">Licencia Estatal Verificada</h4>
+              <p data-i18n="trust_item1_desc">Dispensaria 100% legal autorizada por NYS OCM.</p>
             </div>
           </div>
 
@@ -2119,8 +2302,8 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
             <div class="trust-text-box">
-              <h4>4.8★ · 500+ Reseñas</h4>
-              <p>La máxima satisfacción de nuestra comunidad local.</p>
+              <h4 data-i18n="trust_item2_title">4.8★ · 500+ Reseñas</h4>
+              <p data-i18n="trust_item2_desc">La máxima satisfacción de nuestra comunidad local.</p>
             </div>
           </div>
 
@@ -2129,8 +2312,8 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
             </div>
             <div class="trust-text-box">
-              <h4>Delivery en Queens y NYC</h4>
-              <p>Envíos seguros y discretos a tu domicilio.</p>
+              <h4 data-i18n="trust_item3_title">Delivery en Queens y NYC</h4>
+              <p data-i18n="trust_item3_desc">Envíos seguros y discretos a tu domicilio.</p>
             </div>
           </div>
 
@@ -2139,8 +2322,8 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div class="trust-text-box">
-              <h4>Pickup en Corona</h4>
-              <p>Listo para retirar en mostrador en 15 minutos.</p>
+              <h4 data-i18n="trust_item4_title">Pickup en Corona</h4>
+              <p data-i18n="trust_item4_desc">Listo para retirar en mostrador en 15 minutos.</p>
             </div>
           </div>
 
@@ -2154,9 +2337,9 @@
     <section class="categories-section" id="categorias">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow">Catálogo Premium</span>
-          <h2 class="section-title">Explora por Categoría</h2>
-          <p class="section-subtitle">Cannabis testeado en laboratorios independientes y cultivado por productores locales de Nueva York.</p>
+          <span class="section-eyebrow" data-i18n="cat_eyebrow">Catálogo Premium</span>
+          <h2 class="section-title" data-i18n="cat_title">Explora por Categoría</h2>
+          <p class="section-subtitle" data-i18n="cat_subtitle">Cannabis testeado en laboratorios independientes y cultivado por productores locales de Nueva York.</p>
         </div>
 
         <div class="categories-grid">
@@ -2164,17 +2347,17 @@
           <a href="#productos" class="category-card cat-bg-flores">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-7.07 17.07A10 10 0 0 0 12 22a10 10 0 0 0 7.07-2.93A10 10 0 0 0 12 2Z"/></svg>
-              <h3 class="category-name">Flores</h3>
-              <span class="category-count">40+ Variedades</span>
+              <h3 class="category-name" data-i18n="cat_flowers">Flores</h3>
+              <span class="category-count" data-i18n="cat_flowers_count">40+ Variedades</span>
             </div>
           </a>
 
-          <!-- 2. Pre-rolls (Foto Real) -->
+          <!-- 2. Pre-rolls -->
           <a href="#productos" class="category-card cat-bg-prerolls">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
-              <h3 class="category-name">Pre-rolls</h3>
-              <span class="category-count">Individuales y Packs</span>
+              <h3 class="category-name" data-i18n="cat_prerolls">Pre-rolls</h3>
+              <span class="category-count" data-i18n="cat_prerolls_count">Individuales y Packs</span>
             </div>
           </a>
 
@@ -2182,17 +2365,17 @@
           <a href="#productos" class="category-card cat-bg-concentrados">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-              <h3 class="category-name">Concentrados</h3>
-              <span class="category-count">Live Rosin, Wax</span>
+              <h3 class="category-name" data-i18n="cat_concentrates">Concentrados</h3>
+              <span class="category-count" data-i18n="cat_concentrates_count">Live Rosin, Wax</span>
             </div>
           </a>
 
-          <!-- 4. Vaporizadores (Foto Real) -->
+          <!-- 4. Vaporizadores -->
           <a href="#productos" class="category-card cat-bg-vapes">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="18" x="8" y="3" rx="2"/><path d="M12 21v1"/></svg>
-              <h3 class="category-name">Vaporizadores</h3>
-              <span class="category-count">Pods & Cartuchos</span>
+              <h3 class="category-name" data-i18n="cat_vapes">Vaporizadores</h3>
+              <span class="category-count" data-i18n="cat_vapes_count">Pods & Cartuchos</span>
             </div>
           </a>
 
@@ -2200,8 +2383,8 @@
           <a href="#productos" class="category-card cat-bg-comestibles">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
-              <h3 class="category-name">Comestibles</h3>
-              <span class="category-count">Gomitas y Chocolates</span>
+              <h3 class="category-name" data-i18n="cat_edibles">Comestibles</h3>
+              <span class="category-count" data-i18n="cat_edibles_count">Gomitas y Chocolates</span>
             </div>
           </a>
 
@@ -2209,26 +2392,26 @@
           <a href="#productos" class="category-card cat-bg-tinturas">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6"/><path d="m4.93 10.93 4.24 4.24"/><path d="M2 18h20"/><path d="M20 22H4"/></svg>
-              <h3 class="category-name">Tinturas</h3>
-              <span class="category-count">Goteros Full Spectrum</span>
+              <h3 class="category-name" data-i18n="cat_tinctures">Tinturas</h3>
+              <span class="category-count" data-i18n="cat_tinctures_count">Goteros Full Spectrum</span>
             </div>
           </a>
 
-          <!-- 7. Tópicos (Foto Real) -->
+          <!-- 7. Tópicos -->
           <a href="#productos" class="category-card cat-bg-topicos">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
-              <h3 class="category-name">Tópicos</h3>
-              <span class="category-count">Cremas y Bálsamos</span>
+              <h3 class="category-name" data-i18n="cat_topicals">Tópicos</h3>
+              <span class="category-count" data-i18n="cat_topicals_count">Cremas y Bálsamos</span>
             </div>
           </a>
 
-          <!-- 8. Accesorios (Foto Real) -->
+          <!-- 8. Accesorios -->
           <a href="#productos" class="category-card cat-bg-accesorios">
             <div class="category-card-content">
               <svg class="category-icon-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
-              <h3 class="category-name">Accesorios</h3>
-              <span class="category-count">RAW Papers, Conos</span>
+              <h3 class="category-name" data-i18n="cat_accessories">Accesorios</h3>
+              <span class="category-count" data-i18n="cat_accessories_count">RAW Papers, Conos</span>
             </div>
           </a>
         </div>
@@ -2241,9 +2424,9 @@
     <section class="bestsellers-section" id="productos">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow">Top Ventas Queens</span>
-          <h2 class="section-title">Más Vendidos</h2>
-          <p class="section-subtitle">Los favoritos de nuestra comunidad en Corona, Queens y Nueva York.</p>
+          <span class="section-eyebrow" data-i18n="bestsellers_eyebrow">Top Ventas Queens</span>
+          <h2 class="section-title" data-i18n="bestsellers_title">Más Vendidos</h2>
+          <p class="section-subtitle" data-i18n="bestsellers_subtitle">Los favoritos de nuestra comunidad en Corona, Queens y Nueva York.</p>
         </div>
 
         <div class="product-grid">
@@ -2252,20 +2435,20 @@
           <div class="product-card">
             <div>
               <div class="product-image-container">
-                <span class="product-badge-strain badge-hybrid">Híbrida</span>
+                <span class="product-badge-strain badge-hybrid" data-i18n="badge_hybrid">Híbrida</span>
                 <img src="images/lifter_prerolls_5pack.jpg" alt="Lifter Pre-Rolls 5 Pack" class="product-img" loading="lazy">
-                <span class="product-badge-thc">5x 0.65g | Flor Orgánica</span>
+                <span class="product-badge-thc" data-i18n="p1_badge">5x 0.65g | Flor Orgánica</span>
               </div>
               <div class="product-brand">Buddies Select • Upstate Craft</div>
-              <h3 class="product-title">Lifter Artisanal Pre-Rolls (Pack de 5)</h3>
-              <p class="product-meta">Conos de papel de cáñamo 100% orgánico con flor curada premium y notas a frutos silvestres.</p>
+              <h3 class="product-title" data-i18n="p1_title">Lifter Artisanal Pre-Rolls (Pack de 5)</h3>
+              <p class="product-meta" data-i18n="p1_desc">Conos de papel de cáñamo 100% orgánico con flor curada premium y notas a frutos silvestres.</p>
             </div>
             <div class="product-footer">
               <div class="product-price-row">
                 <span class="product-price">$38.00</span>
-                <span class="product-price-placeholder">(precio placeholder)</span>
+                <span class="product-price-placeholder" data-i18n="price_placeholder">(precio placeholder)</span>
               </div>
-              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('Lifter Artisanal Pre-Rolls 5-Pack')">
+              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('Lifter Artisanal Pre-Rolls 5-Pack')" data-i18n="btn_add_cart">
                 Agregar al carrito
               </button>
             </div>
@@ -2275,20 +2458,20 @@
           <div class="product-card">
             <div>
               <div class="product-image-container">
-                <span class="product-badge-strain badge-sativa">Sativa</span>
+                <span class="product-badge-strain badge-sativa" data-i18n="badge_sativa">Sativa</span>
                 <img src="images/califlora_vape_pod.jpg" alt="Califlora Gold Edition Vape Pod" class="product-img" loading="lazy">
                 <span class="product-badge-thc">THC 88.5% | 1g Pod</span>
               </div>
               <div class="product-brand">Califlora NYC Collection</div>
-              <h3 class="product-title">Califlora Gold Edition — Pod Vaporizador 1g</h3>
-              <p class="product-meta">Dispositivo ergonómico recargable con extracto puro live resin y terpenos botánicos naturales.</p>
+              <h3 class="product-title" data-i18n="p2_title">Califlora Gold Edition — Pod Vaporizador 1g</h3>
+              <p class="product-meta" data-i18n="p2_desc">Dispositivo ergonómico recargable con extracto puro live resin y terpenos botánicos naturales.</p>
             </div>
             <div class="product-footer">
               <div class="product-price-row">
                 <span class="product-price">$55.00</span>
-                <span class="product-price-placeholder">(precio placeholder)</span>
+                <span class="product-price-placeholder" data-i18n="price_placeholder">(precio placeholder)</span>
               </div>
-              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('Califlora Gold Pod Vaporizador 1g')">
+              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('Califlora Gold Pod Vaporizador 1g')" data-i18n="btn_add_cart">
                 Agregar al carrito
               </button>
             </div>
@@ -2298,20 +2481,20 @@
           <div class="product-card">
             <div>
               <div class="product-image-container">
-                <span class="product-badge-strain badge-topical">Tópico</span>
+                <span class="product-badge-strain badge-topical" data-i18n="badge_topical">Tópico</span>
                 <img src="images/iroha_nourishing_cream.jpg" alt="Iroha Nature Nourishing Face Cream" class="product-img" loading="lazy">
                 <span class="product-badge-thc">CBD 500mg • 50ml</span>
               </div>
               <div class="product-brand">Iroha Nature Cannabis Care</div>
-              <h3 class="product-title">Crema Facial Nutritiva & Reparadora</h3>
-              <p class="product-meta">Fórmula botánica con extracto de semilla de cáñamo y antioxidantes para calmar e hidratar la piel.</p>
+              <h3 class="product-title" data-i18n="p3_title">Crema Facial Nutritiva & Reparadora</h3>
+              <p class="product-meta" data-i18n="p3_desc">Fórmula botánica con extracto de semilla de cáñamo y antioxidantes para calmar e hidratar la piel.</p>
             </div>
             <div class="product-footer">
               <div class="product-price-row">
                 <span class="product-price">$42.00</span>
-                <span class="product-price-placeholder">(precio placeholder)</span>
+                <span class="product-price-placeholder" data-i18n="price_placeholder">(precio placeholder)</span>
               </div>
-              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('Crema Facial Nutritiva Iroha Nature')">
+              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('Crema Facial Nutritiva Iroha Nature')" data-i18n="btn_add_cart">
                 Agregar al carrito
               </button>
             </div>
@@ -2321,20 +2504,20 @@
           <div class="product-card">
             <div>
               <div class="product-image-container">
-                <span class="product-badge-strain badge-accessories">Accesorios</span>
+                <span class="product-badge-strain badge-accessories" data-i18n="badge_accessories">Accesorios</span>
                 <img src="images/raw_preroll_cone.jpg" alt="RAW Connoisseur Papers & Cones" class="product-img" loading="lazy">
                 <span class="product-badge-thc">100% Unrefined</span>
               </div>
               <div class="product-brand">RAW Classic Edition</div>
-              <h3 class="product-title">RAW Connoisseur King Size + Conos</h3>
-              <p class="product-meta">Papeles ultrafinos sin refinar con puntas de boquilla integradas para un quemado suave y parejo.</p>
+              <h3 class="product-title" data-i18n="p4_title">RAW Connoisseur King Size + Conos</h3>
+              <p class="product-meta" data-i18n="p4_desc">Papeles ultrafinos sin refinar con puntas de boquilla integradas para un quemado suave y parejo.</p>
             </div>
             <div class="product-footer">
               <div class="product-price-row">
                 <span class="product-price">$8.50</span>
-                <span class="product-price-placeholder">(precio placeholder)</span>
+                <span class="product-price-placeholder" data-i18n="price_placeholder">(precio placeholder)</span>
               </div>
-              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('RAW Connoisseur King Size + Conos')">
+              <button type="button" class="btn-red btn-add-cart" onclick="addToCart('RAW Connoisseur King Size + Conos')" data-i18n="btn_add_cart">
                 Agregar al carrito
               </button>
             </div>
@@ -2351,10 +2534,10 @@
       <div class="container">
         <div class="promo-banner-content">
           <div class="promo-text-group">
-            <h3>15% de descuento en tu primera compra</h3>
-            <p>Usa el código <span class="promo-code-pill">BUDDIES15</span> al pagar online o en mostrador en nuestra tienda de Corona, Queens.</p>
+            <h3 data-i18n="promo_title">15% de descuento en tu primera compra</h3>
+            <p><span data-i18n="promo_subtitle">Usa el código</span> <span class="promo-code-pill">BUDDIES15</span> <span data-i18n="promo_subtitle2">al pagar online o en mostrador en nuestra tienda de Corona, Queens.</span></p>
           </div>
-          <a href="#newsletter" class="btn-red btn-promo-action">
+          <a href="#newsletter" class="btn-red btn-promo-action" data-i18n="btn_register">
             Regístrate
           </a>
         </div>
@@ -2372,35 +2555,35 @@
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Equipo y fundadores de Buddies Dispensary NYC" class="story-main-img" loading="lazy">
             <div class="story-badge-overlay">
               <div class="story-badge-number">+45</div>
-              <div class="story-badge-label">Empleos creados con impacto comunitario</div>
+              <div class="story-badge-label" data-i18n="story_badge_label">Empleos creados con impacto comunitario</div>
             </div>
           </div>
 
           <div class="story-text-wrap">
-            <span class="section-eyebrow green-badge">Nuestra Misión</span>
-            <h2 class="story-title">De segundas oportunidades a la excelencia cannábica</h2>
+            <span class="section-eyebrow green-badge" data-i18n="story_eyebrow">Nuestra Misión</span>
+            <h2 class="story-title" data-i18n="story_title">De segundas oportunidades a la excelencia cannábica</h2>
             
-            <p class="story-paragraph">
+            <p class="story-paragraph" data-i18n="story_paragraph">
               Fundada por neoyorquinos que vivieron en primera persona el impacto del sistema penal, Buddies Dispensary NYC nació para transformar la industria del cannabis en un motor de justicia y oportunidades reales. Hoy ofrecemos los mejores productos cultivados en el estado de Nueva York mientras creamos empleos dignos, educamos a nuestra comunidad y construimos un modelo comercial transparente, seguro e inclusivo desde Corona, Queens.
             </p>
 
             <div class="story-stats-row">
               <div class="story-stat-item">
                 <h4>100%</h4>
-                <p>Capital Social</p>
+                <p data-i18n="story_stat1">Capital Social</p>
               </div>
               <div class="story-stat-item">
                 <h4>Corona, NY</h4>
-                <p>Tienda Insigne</p>
+                <p data-i18n="story_stat2">Tienda Insigne</p>
               </div>
               <div class="story-stat-item">
                 <h4>NYS OCM</h4>
-                <p>Licencia Oficial</p>
+                <p data-i18n="story_stat3">Licencia Oficial</p>
               </div>
             </div>
 
             <a href="#contacto" class="btn-secondary-link">
-              Conoce más
+              <span data-i18n="btn_learn_more">Conoce más</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </div>
@@ -2415,36 +2598,36 @@
     <section class="rewards-section" id="recompensas">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow">Buddies Club</span>
-          <h2 class="section-title">Programa de Recompensas</h2>
-          <p class="section-subtitle">Gana puntos en cada compra y disfruta de beneficios exclusivos en nuestra tienda y delivery.</p>
+          <span class="section-eyebrow" data-i18n="rewards_eyebrow">Buddies Club</span>
+          <h2 class="section-title" data-i18n="rewards_title">Programa de Recompensas</h2>
+          <p class="section-subtitle" data-i18n="rewards_subtitle">Gana puntos en cada compra y disfruta de beneficios exclusivos en nuestra tienda y delivery.</p>
         </div>
 
         <div class="rewards-steps-grid">
           <!-- Paso 1 -->
           <div class="step-card">
             <div class="step-number">1</div>
-            <h3 class="step-title">Compra</h3>
-            <p class="step-description">Acumula 1 punto por cada $1 gastado en compras en tienda o delivery en nuestra sucursal de Corona.</p>
+            <h3 class="step-title" data-i18n="step1_title">Compra</h3>
+            <p class="step-description" data-i18n="step1_desc">Acumula 1 punto por cada $1 gastado en compras en tienda o delivery en nuestra sucursal de Corona.</p>
           </div>
 
           <!-- Paso 2 -->
           <div class="step-card">
             <div class="step-number">2</div>
-            <h3 class="step-title">Suma Puntos</h3>
-            <p class="step-description">Desbloquea niveles especiales, regalos de cumpleaños y accesos preferenciales a cosechas de edición limitada.</p>
+            <h3 class="step-title" data-i18n="step2_title">Suma Puntos</h3>
+            <p class="step-description" data-i18n="step2_desc">Desbloquea niveles especiales, regalos de cumpleaños y accesos preferenciales a cosechas de edición limitada.</p>
           </div>
 
           <!-- Paso 3 -->
           <div class="step-card">
             <div class="step-number">3</div>
-            <h3 class="step-title">Canjea</h3>
-            <p class="step-description">Aplica tus puntos acumulados como descuentos directos en tus futuras compras en línea o en mostrador.</p>
+            <h3 class="step-title" data-i18n="step3_title">Canjea</h3>
+            <p class="step-description" data-i18n="step3_desc">Aplica tus puntos acumulados como descuentos directos en tus futuras compras en línea o en mostrador.</p>
           </div>
         </div>
 
         <div class="rewards-cta-box">
-          <a href="#newsletter" class="btn-red">
+          <a href="#newsletter" class="btn-red" data-i18n="btn_join_free">
             Únete gratis
           </a>
         </div>
@@ -2457,9 +2640,9 @@
     <section class="testimonials-section" id="testimonios">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow">Opiniones Reales</span>
-          <h2 class="section-title">Testimonios</h2>
-          <p class="section-subtitle">Lo que dicen nuestros clientes sobre su experiencia en Buddies Dispensary NYC en Corona, Queens.</p>
+          <span class="section-eyebrow" data-i18n="test_eyebrow">Opiniones Reales</span>
+          <h2 class="section-title" data-i18n="test_title">Testimonios</h2>
+          <p class="section-subtitle" data-i18n="test_subtitle">Lo que dicen nuestros clientes sobre su experiencia en Buddies Dispensary NYC en Corona, Queens.</p>
         </div>
 
         <div class="testimonials-grid">
@@ -2468,7 +2651,7 @@
           <div class="testimonial-card">
             <div>
               <div class="testimonial-stars">★★★★★</div>
-              <p class="testimonial-quote">
+              <p class="testimonial-quote" data-i18n="test1_quote">
                 "La atención en la tienda de 43rd Ave en Corona es excelente. Queda a pasos de la estación del tren 7 en 103rd St y los budtenders saben exactamente qué recomendarte."
               </p>
             </div>
@@ -2476,7 +2659,7 @@
               <div class="author-avatar">CM</div>
               <div class="author-info">
                 <h5>Carlos M.</h5>
-                <p>Cliente en Corona, Queens</p>
+                <p data-i18n="test1_author">Cliente en Corona, Queens</p>
               </div>
             </div>
           </div>
@@ -2485,7 +2668,7 @@
           <div class="testimonial-card">
             <div>
               <div class="testimonial-stars">★★★★★</div>
-              <p class="testimonial-quote">
+              <p class="testimonial-quote" data-i18n="test2_quote">
                 "El delivery en Queens llegó en menos de 45 minutos. Todo perfectamente sellado con certificados de laboratorio. Me encanta apoyar a Buddies Dispensary por su misión social tan real."
               </p>
             </div>
@@ -2493,7 +2676,7 @@
               <div class="author-avatar">DR</div>
               <div class="author-info">
                 <h5>Devon R.</h5>
-                <p>Cliente en Queens, NY</p>
+                <p data-i18n="test2_author">Cliente en Queens, NY</p>
               </div>
             </div>
           </div>
@@ -2502,7 +2685,7 @@
           <div class="testimonial-card">
             <div>
               <div class="testimonial-stars">★★★★★</div>
-              <p class="testimonial-quote">
+              <p class="testimonial-quote" data-i18n="test3_quote">
                 "Excelente ubicación cerca de Flushing Meadows y Citi Field. Tienen la mejor selección de pre-rolls y flores frescas de cultivadores de NY. ¡La recogida exprés te ahorra muchísimo tiempo!"
               </p>
             </div>
@@ -2510,7 +2693,7 @@
               <div class="author-avatar">ST</div>
               <div class="author-info">
                 <h5>Sofia T.</h5>
-                <p>Cliente en Corona Plaza</p>
+                <p data-i18n="test3_author">Cliente en Corona Plaza</p>
               </div>
             </div>
           </div>
@@ -2525,9 +2708,9 @@
     <section class="stores-section" id="tiendas">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow green-badge">Visítanos en Queens</span>
-          <h2 class="section-title">Nuestra Ubicación</h2>
-          <p class="section-subtitle">Dispensaria legal insigne en el corazón de Corona, Queens. Fácil acceso en metro, autobús o vehículo.</p>
+          <span class="section-eyebrow green-badge" data-i18n="store_eyebrow">Visítanos en Queens</span>
+          <h2 class="section-title" data-i18n="store_title">Nuestra Ubicación</h2>
+          <p class="section-subtitle" data-i18n="store_subtitle">Dispensaria legal insigne en el corazón de Corona, Queens. Fácil acceso en metro, autobús o vehículo.</p>
         </div>
 
         <div class="single-store-card">
@@ -2535,7 +2718,7 @@
           <!-- Lado Izquierdo: Mapa Interactivo Embebido -->
           <div class="store-map-side">
             <span class="store-map-floating-badge">
-              <span class="store-status-dot"></span> Abierto hoy: 9:00 AM – 11:00 PM
+              <span class="store-status-dot"></span> <span data-i18n="store_open_today_text">Abierto hoy: 9:00 AM – 11:00 PM</span>
             </span>
             <iframe 
               class="store-map-iframe"
@@ -2558,7 +2741,7 @@
                 </div>
               </div>
 
-              <p class="store-description-text">
+              <p class="store-description-text" data-i18n="store_desc_text">
                 Nuestra dispensaria principal se encuentra estratégicamente ubicada en el vibrante vecindario de <strong>Corona, Queens</strong>, a solo 1 cuadra de <em>Corona Plaza</em> y a pocos minutos de <em>Flushing Meadows Corona Park</em> y <em>Citi Field</em>. Un espacio moderno, seguro, luminoso y accesible con budtenders bilingües listos para asesorarte.
               </p>
 
@@ -2566,24 +2749,24 @@
               <div class="transit-block">
                 <div class="transit-block-title">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
-                  Transporte Público Cercano (MTA):
+                  <span data-i18n="transit_title">Transporte Público Cercano (MTA):</span>
                 </div>
                 <ul class="transit-list">
                   <li class="transit-item">
                     <span class="transit-badge">7</span>
-                    <div>
+                    <div data-i18n="transit_subway">
                       <strong>Metro (Tren 7):</strong> Estación <strong>103rd St - Corona Plaza</strong> (a 2 minutos a pie / 150 metros) y estación <strong>Junction Blvd</strong> (servicio local y exprés).
                     </div>
                   </li>
                   <li class="transit-item">
                     <span class="transit-badge transit-badge-bus">BUS</span>
-                    <div>
+                    <div data-i18n="transit_bus">
                       <strong>Autobuses MTA:</strong> Líneas <strong>Q23</strong> (por 102nd/104th St), <strong>Q58</strong> (Corona Ave) y <strong>Q72</strong> (conexión directa con Junction Blvd y Aeropuerto LaGuardia).
                     </div>
                   </li>
                   <li class="transit-item">
                     <span class="transit-badge transit-badge-car">AUTO</span>
-                    <div>
+                    <div data-i18n="transit_car">
                       <strong>Acceso Vehicular:</strong> Conexión inmediata desde <strong>Grand Central Parkway</strong> (Salida Roosevelt Ave) y <strong>Long Island Expressway (I-495)</strong>.
                     </div>
                   </li>
@@ -2594,19 +2777,19 @@
               <div class="store-features-row">
                 <div class="store-feature-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Retiro Exprés en 15 min</span>
+                  <span data-i18n="feature_pickup">Retiro Exprés en 15 min</span>
                 </div>
                 <div class="store-feature-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Delivery en todo Queens & NYC</span>
+                  <span data-i18n="feature_delivery">Delivery en todo Queens & NYC</span>
                 </div>
                 <div class="store-feature-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Cajero ATM en tienda</span>
+                  <span data-i18n="feature_atm">Cajero ATM en tienda</span>
                 </div>
                 <div class="store-feature-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                  <span>Atención en Español e Inglés</span>
+                  <span data-i18n="feature_bilingual">Atención en Español e Inglés</span>
                 </div>
               </div>
             </div>
@@ -2615,9 +2798,9 @@
             <div class="store-actions-row">
               <a href="https://maps.google.com/maps?q=102-58+43rd+Avenue,+Corona,+NY+11368" target="_blank" rel="noopener" class="btn-red">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-                Cómo llegar (Google Maps)
+                <span data-i18n="btn_directions">Cómo llegar (Google Maps)</span>
               </a>
-              <a href="#productos" class="btn-directions">
+              <a href="#productos" class="btn-directions" data-i18n="btn_view_menu_online">
                 Ver menú online
               </a>
             </div>
@@ -2629,14 +2812,14 @@
     </section>
 
     <!-- ==========================================================================
-         11. EDUCACIÓN CANNÁBICA
+         11. EDUCACIÓN CANNÁBICA (DESCRIPCIONES MEJORADAS)
          ========================================================================== -->
     <section class="education-section" id="educacion">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow green-badge">Aprende con Nosotros</span>
-          <h2 class="section-title">Educación Cannábica</h2>
-          <p class="section-subtitle">Información clara y científica para un consumo responsable, informado y consciente.</p>
+          <span class="section-eyebrow green-badge" data-i18n="edu_eyebrow">Educación & Consumo Responsable</span>
+          <h2 class="section-title" data-i18n="edu_title">Guía para el Consumidor Consciente</h2>
+          <p class="section-subtitle" data-i18n="edu_subtitle">Información clara, recomendaciones científicas y consejos prácticos para que disfrutes tu experiencia cannábica con total confianza y bienestar.</p>
         </div>
 
         <div class="education-grid">
@@ -2648,12 +2831,12 @@
             </div>
             <div class="article-body">
               <div>
-                <span class="article-tag">Fundamentos • 4 min lectura</span>
-                <h3 class="article-title">Guía para principiantes: Cómo elegir entre Indica, Sativa e Híbrida</h3>
-                <p class="article-excerpt">Aprende a diferenciar efectos, perfiles de terpenos y cannabinoides para elegir la cepa perfecta.</p>
+                <span class="article-tag" data-i18n="art1_tag">Cepas & Efectos • 4 min lectura</span>
+                <h3 class="article-title" data-i18n="art1_title">Indica, Sativa o Híbrida: ¿Cuál se adapta mejor a tu momento?</h3>
+                <p class="article-excerpt" data-i18n="art1_desc">Descubre cómo los perfiles de terpenos y la proporción de cannabinoides influyen en la relajación física, la creatividad o el enfoque diario según la ocasión.</p>
               </div>
               <span class="article-link">
-                Leer artículo
+                <span data-i18n="btn_read_article">Leer artículo</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </span>
             </div>
@@ -2666,12 +2849,12 @@
             </div>
             <div class="article-body">
               <div>
-                <span class="article-tag">Consumo Seguro • 3 min lectura</span>
-                <h3 class="article-title">Dosificación responsable de comestibles: La regla de empezar despacio</h3>
-                <p class="article-excerpt">Conoce tiempos de activación, miligramos recomendados y cómo evitar una experiencia abrumadora.</p>
+                <span class="article-tag" data-i18n="art2_tag">Consumo Seguro • 3 min lectura</span>
+                <h3 class="article-title" data-i18n="art2_title">Guía de Comestibles: Cómo dosificar correctamente y evitar excesos</h3>
+                <p class="article-excerpt" data-i18n="art2_desc">La regla de oro: empieza con 2.5mg a 5mg de THC y espera al menos 2 horas. Conoce tiempos de absorción hepática y cómo tener una experiencia placentera.</p>
               </div>
               <span class="article-link">
-                Leer artículo
+                <span data-i18n="btn_read_article">Leer artículo</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </span>
             </div>
@@ -2684,12 +2867,12 @@
             </div>
             <div class="article-body">
               <div>
-                <span class="article-tag">Cultura & Ley • 5 min lectura</span>
-                <h3 class="article-title">El impacto de comprar legal en NY: Del legado a la licencia OCM</h3>
-                <p class="article-excerpt">Por qué tu compra en dispensarias reguladas apoya la equidad social y el cultivo local en el estado.</p>
+                <span class="article-tag" data-i18n="art3_tag">Calidad & Pureza • 5 min lectura</span>
+                <h3 class="article-title" data-i18n="art3_title">Por qué comprar legal en Queens: Seguridad, COA y Apoyo Local</h3>
+                <p class="article-excerpt" data-i18n="art3_desc">Todos nuestros productos cuentan con certificados de análisis oficiales (COA) libres de pesticidas, metales y moho, apoyando al desarrollo económico de NY.</p>
               </div>
               <span class="article-link">
-                Leer artículo
+                <span data-i18n="btn_read_article">Leer artículo</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </span>
             </div>
@@ -2705,9 +2888,9 @@
     <section class="faq-section" id="faq">
       <div class="container">
         <div class="section-header">
-          <span class="section-eyebrow">Dudas Comunes</span>
-          <h2 class="section-title">Preguntas Frecuentes</h2>
-          <p class="section-subtitle">Todo lo que necesitas saber antes de comprar en tienda o pedir delivery en Buddies Dispensary NYC.</p>
+          <span class="section-eyebrow" data-i18n="faq_eyebrow">Dudas Comunes</span>
+          <h2 class="section-title" data-i18n="faq_title">Preguntas Frecuentes</h2>
+          <p class="section-subtitle" data-i18n="faq_subtitle">Todo lo que necesitas saber antes de comprar en tienda o pedir delivery en Buddies Dispensary NYC.</p>
         </div>
 
         <div class="faq-accordion-container">
@@ -2715,11 +2898,11 @@
           <!-- Pregunta 1 -->
           <div class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false">
-              <span>¿Cuáles son los requisitos de edad e identificación para comprar?</span>
+              <span data-i18n="faq1_q">¿Cuáles son los requisitos de edad e identificación para comprar?</span>
               <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-content">
-              <div class="faq-content-inner">
+              <div class="faq-content-inner" data-i18n="faq1_a">
                 Debes tener al menos 21 años cumplidos. Es obligatorio presentar una identificación física oficial y vigente emitida por el gobierno (licencia de conducir estadounidense o internacional, pasaporte de cualquier país o identificación estatal). No se requiere residencia en el estado de Nueva York ni tarjeta médica.
               </div>
             </div>
@@ -2728,11 +2911,11 @@
           <!-- Pregunta 2 -->
           <div class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false">
-              <span>¿Cómo funciona el servicio de delivery y qué zonas cubren?</span>
+              <span data-i18n="faq2_q">¿Cómo funciona el servicio de delivery y qué zonas cubren?</span>
               <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-content">
-              <div class="faq-content-inner">
+              <div class="faq-content-inner" data-i18n="faq2_a">
                 Entregamos directamente en domicilios particulares en Queens, Manhattan y Brooklyn mediante mensajería segura y discreta. Al ordenar en nuestro menú online, ingresas tu dirección y recibirás actualizaciones por SMS. El titular de la compra debe recibir el pedido y presentar su identificación 21+.
               </div>
             </div>
@@ -2741,11 +2924,11 @@
           <!-- Pregunta 3 -->
           <div class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false">
-              <span>¿Cuáles son los límites legales de compra en Nueva York?</span>
+              <span data-i18n="faq3_q">¿Cuáles son los límites legales de compra en Nueva York?</span>
               <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-content">
-              <div class="faq-content-inner">
+              <div class="faq-content-inner" data-i18n="faq3_a">
                 De acuerdo con las regulaciones de la NYS OCM, un adulto de 21+ puede comprar hasta 3 onzas (85 gramos) de flor de cannabis y hasta 24 gramos de cannabis concentrado (aceites para vape, comestibles, tinturas y ceras) por persona al día.
               </div>
             </div>
@@ -2754,11 +2937,11 @@
           <!-- Pregunta 4 -->
           <div class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false">
-              <span>¿Qué formas de pago aceptan en tienda y para pedidos online?</span>
+              <span data-i18n="faq4_q">¿Qué formas de pago aceptan en tienda y para pedidos online?</span>
               <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-content">
-              <div class="faq-content-inner">
+              <div class="faq-content-inner" data-i18n="faq4_a">
                 Aceptamos efectivo (contamos con cajeros automáticos ATM seguros dentro de nuestra sucursal de Corona) y pagos mediante tarjeta de débito con PIN (PIN-debit). Debido a regulaciones bancarias federales, las tarjetas de crédito tradicionales aún no están permitidas.
               </div>
             </div>
@@ -2767,11 +2950,11 @@
           <!-- Pregunta 5 -->
           <div class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false">
-              <span>¿Cuáles son los horarios de atención y retiro en tienda (pickup)?</span>
+              <span data-i18n="faq5_q">¿Cuáles son los horarios de atención y retiro en tienda (pickup)?</span>
               <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-content">
-              <div class="faq-content-inner">
+              <div class="faq-content-inner" data-i18n="faq5_a">
                 Nuestra tienda en 102-58 43rd Avenue (Corona, Queens) opera de 9:00 AM a 11:00 PM los 7 días de la semana. Puedes pedir online para pickup exprés y tu orden estará lista en menos de 15 minutos en el mostrador dedicado.
               </div>
             </div>
@@ -2780,11 +2963,11 @@
           <!-- Pregunta 6 -->
           <div class="faq-item">
             <button type="button" class="faq-trigger" aria-expanded="false">
-              <span>¿Los productos están certificados y analizados por laboratorios?</span>
+              <span data-i18n="faq6_q">¿Los productos están certificados y analizados por laboratorios?</span>
               <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <div class="faq-content">
-              <div class="faq-content-inner">
+              <div class="faq-content-inner" data-i18n="faq6_a">
                 Absolutamente. El 100% de los productos comercializados en Buddies Dispensary NYC cuentan con Certificados de Análisis (COA) emitidos por laboratorios independientes certificados por el estado. Puedes escanear el código QR en cada empaque para verificar potencia y pureza libre de contaminantes.
               </div>
             </div>
@@ -2800,18 +2983,18 @@
     <section class="newsletter-section" id="newsletter">
       <div class="container">
         <div class="newsletter-card">
-          <span class="section-eyebrow green-badge">Comunidad Buddies</span>
-          <h3>Entérate de las Novedades</h3>
-          <p>Suscríbete para recibir lanzamientos de cosechas exclusivas, eventos comunitarios en Corona y promociones especiales de Buddies Dispensary NYC.</p>
+          <span class="section-eyebrow green-badge" data-i18n="news_eyebrow">Comunidad Buddies</span>
+          <h3 data-i18n="news_title">Entérate de las Novedades</h3>
+          <p data-i18n="news_desc">Suscríbete para recibir lanzamientos de cosechas exclusivas, eventos comunitarios en Corona y promociones especiales de Buddies Dispensary NYC.</p>
           
           <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
             <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Tu correo electrónico..." required aria-label="Correo electrónico para ofertas">
-            <button type="submit" class="btn-red">
+            <button type="submit" class="btn-red" data-i18n="news_btn">
               Recibe ofertas exclusivas
             </button>
           </form>
           
-          <div class="newsletter-success" id="newsletterSuccessMsg">
+          <div class="newsletter-success" id="newsletterSuccessMsg" data-i18n="news_success">
             ¡Gracias por unirte a la comunidad Buddies Dispensary NYC! Te hemos enviado tu cupón de bienvenida.
           </div>
         </div>
@@ -2836,7 +3019,7 @@
             </div>
           </div>
           <p class="footer-tagline">"You get New York's finest. We get second chances."</p>
-          <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px;">
+          <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 16px;" data-i18n="footer_brand_desc">
             Dispensaria legal de cannabis en Corona, Queens con enfoque en justicia social, calidad artesanal neoyorquina y empoderamiento comunitario.
           </p>
           <div class="footer-social-links">
@@ -2854,36 +3037,36 @@
 
         <!-- Columna 2: Navegación -->
         <div>
-          <h5 class="footer-col-title">Navegación</h5>
+          <h5 class="footer-col-title" data-i18n="footer_col_nav">Navegación</h5>
           <ul class="footer-links-list">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#productos">Menú y Productos</a></li>
-            <li><a href="#categorias">Categorías</a></li>
-            <li><a href="#historia">Nuestra Historia</a></li>
-            <li><a href="#recompensas">Buddies Club</a></li>
-            <li><a href="#faq">Preguntas Frecuentes</a></li>
+            <li><a href="#hero" data-i18n="f_link_home">Inicio</a></li>
+            <li><a href="#productos" data-i18n="f_link_menu">Menú y Productos</a></li>
+            <li><a href="#categorias" data-i18n="f_link_categories">Categorías</a></li>
+            <li><a href="#historia" data-i18n="f_link_about">Nuestra Historia</a></li>
+            <li><a href="#recompensas" data-i18n="f_link_rewards">Buddies Club</a></li>
+            <li><a href="#faq" data-i18n="f_link_faq">Preguntas Frecuentes</a></li>
           </ul>
         </div>
 
         <!-- Columna 3: Ubicación y Servicios -->
         <div>
-          <h5 class="footer-col-title">Ubicación & Tienda</h5>
+          <h5 class="footer-col-title" data-i18n="footer_col_location">Ubicación & Tienda</h5>
           <ul class="footer-links-list">
             <li><a href="#tiendas">102-58 43rd Ave, Corona, NY</a></li>
-            <li><a href="#tiendas">Cerca del Tren 7 (103rd St)</a></li>
-            <li><a href="#tiendas">A pasos de Corona Plaza</a></li>
-            <li><a href="#productos">Servicio de Delivery</a></li>
-            <li><a href="#productos">Retiro Exprés (Pickup)</a></li>
+            <li><a href="#tiendas" data-i18n="f_near_train">Cerca del Tren 7 (103rd St)</a></li>
+            <li><a href="#tiendas" data-i18n="f_near_plaza">A pasos de Corona Plaza</a></li>
+            <li><a href="#productos" data-i18n="f_delivery">Servicio de Delivery</a></li>
+            <li><a href="#productos" data-i18n="f_pickup">Retiro Exprés (Pickup)</a></li>
           </ul>
         </div>
 
         <!-- Columna 4: Contacto y Soporte -->
         <div>
-          <h5 class="footer-col-title">Contacto</h5>
+          <h5 class="footer-col-title" data-i18n="footer_col_contact">Contacto</h5>
           <ul class="footer-links-list">
             <li>Email: <a href="mailto:hola@buddiesdispensarynyc.com">hola@buddiesdispensarynyc.com</a></li>
             <li>Tel: +1 (718) 555-BUDS</li>
-            <li>Horario: Lun - Dom 9am - 11pm</li>
+            <li><span data-i18n="footer_hours">Horario</span>: Lun - Dom 9am - 11pm</li>
             <li>102-58 43rd Ave, Corona, NY 11368</li>
           </ul>
         </div>
@@ -2897,11 +3080,11 @@
           <span class="license-pill">NYS Office of Cannabis Management Licensed Dispensary</span>
         </div>
 
-        <p class="legal-warning-text">
+        <p class="legal-warning-text" data-i18n="footer_legal_warning">
           <strong>Aviso de consumo responsable:</strong> Para uso exclusivo de adultos mayores de 21 años. Mantener fuera del alcance de niños y mascotas. En caso de ingestión accidental o sospecha de sobredosis, llame a Poison Help al 1-800-222-1222 o al 911. No conduzca ni opere maquinaria pesada bajo los efectos del cannabis. Las mujeres embarazadas o en periodo de lactancia no deben consumir cannabis debido a posibles riesgos para la salud del feto o lactante.
         </p>
 
-        <div class="hopeline-box">
+        <div class="hopeline-box" data-i18n="footer_hopeline">
           ¿Problemas con el juego o sustancias? Hay esperanza. Llame a la línea de ayuda gratuita y confidencial de NY: <strong>1-877-8-HOPENY</strong> o envíe un mensaje de texto con la palabra <strong>HOPENY al 467369</strong> (Disponible 24/7 en español e inglés).
         </div>
       </div>
@@ -2909,11 +3092,11 @@
       <!-- Barra inferior Copyright -->
       <div class="footer-bottom-bar">
         <div>
-          © 2026 Buddies Dispensary LLC. Todos los derechos reservados.
+          © 2026 Buddies Dispensary LLC. <span data-i18n="footer_rights">Todos los derechos reservados.</span>
         </div>
         <div>
-          <a href="#" style="margin-right: 16px;">Términos y Condiciones</a>
-          <a href="#">Política de Privacidad</a>
+          <a href="#" style="margin-right: 16px;" data-i18n="footer_terms">Términos y Condiciones</a>
+          <a href="#" data-i18n="footer_privacy">Política de Privacidad</a>
         </div>
       </div>
 
@@ -2924,10 +3107,405 @@
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- ==========================================================================
-       JAVASCRIPT INTERACTIVO VANILLA
+       JAVASCRIPT: TRADUCTOR MULTI-IDIOMA (ES / EN) & INTERACTIVIDAD
        ========================================================================== -->
   <script>
+    // Diccionario completo de traducciones Español / Inglés
+    const translations = {
+      es: {
+        age_title: "Verificación de Edad",
+        age_desc: "Bienvenido a <strong class=\"text-red\">Buddies Dispensary NYC</strong>. Para ingresar a nuestro sitio web y comprar productos de cannabis en el Estado de Nueva York, debes tener 21 años o más.",
+        age_confirm: "Sí, tengo 21 años o más",
+        age_deny: "No, soy menor de 21 años",
+        age_legal: "Dispensaria con licencia oficial del Estado de Nueva York (<span class=\"text-green\">NYS OCM</span>). El consumo de cannabis está estrictamente regulado para mayores de 21 años.",
+        age_rejected_title: "Acceso Restringido",
+        age_rejected_desc: "Lo sentimos. De acuerdo con las leyes del Estado de Nueva York (NYS OCM), debes tener al menos 21 años para ver el menú y adquirir productos de cannabis.",
+        age_rejected_box: "Para recursos y orientación para jóvenes y familias, visita <strong>cannabis.ny.gov</strong> o llama a la línea de ayuda <strong>1-877-8-HOPENY</strong>.",
+        age_rejected_btn: "Ir al sitio oficial NYS OCM",
+        header_store_badge: "Corona, Queens · 102-58 43rd Ave",
+        nav_location: "Ubicación",
+        nav_about: "Nosotros",
+        nav_education: "Educación",
+        nav_rewards: "Recompensas",
+        nav_contact: "Contacto",
+        nav_faq: "Preguntas Frecuentes",
+        nav_location_transit: "Ubicación & Transporte",
+        btn_order_now: "Ordenar ahora",
+        mobile_our_location: "📍 Nuestra Ubicación:",
+        store_open_today_text: "Abierto hoy: 9:00 AM – 11:00 PM",
+        btn_open_maps: "Abrir en Google Maps",
+        hero_tag_ocm: "Licencia Oficial NYS OCM",
+        hero_tag_queens: "Corona, Queens • 4.8★",
+        hero_title: "Obtén lo mejor de Nueva York. <span class=\"text-red\">Nosotros obtenemos segundas oportunidades.</span>",
+        hero_subtitle: "<strong class=\"text-white\">Buddies Dispensary NYC</strong> es tu dispensaria legal en <strong>Corona, Queens</strong> (102-58 43rd Ave), ofreciendo flores y extractos cultivados por productores locales de NY con justicia social y oportunidades reales.",
+        btn_view_menu: "Ver menú",
+        hero_emblem_tag: "DISPENSARIA OFICIAL EN QUEENS",
+        hero_pill_1: "100% Legal & Regulado por el Estado de NY",
+        hero_pill_2: "Pickup en 15 Minutos o Delivery a Domicilio",
+        hero_pill_3: "102-58 43rd Ave (Junto al Tren 7 en Corona)",
+        trust_item1_title: "Licencia Estatal Verificada",
+        trust_item1_desc: "Dispensaria 100% legal autorizada por NYS OCM.",
+        trust_item2_title: "4.8★ · 500+ Reseñas",
+        trust_item2_desc: "La máxima satisfacción de nuestra comunidad local.",
+        trust_item3_title: "Delivery en Queens y NYC",
+        trust_item3_desc: "Envíos seguros y discretos a tu domicilio.",
+        trust_item4_title: "Pickup en Corona",
+        trust_item4_desc: "Listo para retirar en mostrador en 15 minutos.",
+        cat_eyebrow: "Catálogo Premium",
+        cat_title: "Explora por Categoría",
+        cat_subtitle: "Cannabis testeado en laboratorios independientes y cultivado por productores locales de Nueva York.",
+        cat_flowers: "Flores",
+        cat_flowers_count: "40+ Variedades",
+        cat_prerolls: "Pre-rolls",
+        cat_prerolls_count: "Individuales y Packs",
+        cat_concentrates: "Concentrados",
+        cat_concentrates_count: "Live Rosin, Wax",
+        cat_vapes: "Vaporizadores",
+        cat_vapes_count: "Pods & Cartuchos",
+        cat_edibles: "Comestibles",
+        cat_edibles_count: "Gomitas y Chocolates",
+        cat_tinctures: "Tinturas",
+        cat_tinctures_count: "Goteros Full Spectrum",
+        cat_topicals: "Tópicos",
+        cat_topicals_count: "Cremas y Bálsamos",
+        cat_accessories: "Accesorios",
+        cat_accessories_count: "RAW Papers, Conos",
+        bestsellers_eyebrow: "Top Ventas Queens",
+        bestsellers_title: "Más Vendidos",
+        bestsellers_subtitle: "Los favoritos de nuestra comunidad en Corona, Queens y Nueva York.",
+        badge_hybrid: "Híbrida",
+        badge_sativa: "Sativa",
+        badge_topical: "Tópico",
+        badge_accessories: "Accesorios",
+        p1_badge: "5x 0.65g | Flor Orgánica",
+        p1_title: "Lifter Artisanal Pre-Rolls (Pack de 5)",
+        p1_desc: "Conos de papel de cáñamo 100% orgánico con flor curada premium y notas a frutos silvestres.",
+        p2_title: "Califlora Gold Edition — Pod Vaporizador 1g",
+        p2_desc: "Dispositivo ergonómico recargable con extracto puro live resin y terpenos botánicos naturales.",
+        p3_title: "Crema Facial Nutritiva & Reparadora",
+        p3_desc: "Fórmula botánica con extracto de semilla de cáñamo y antioxidantes para calmar e hidratar la piel.",
+        p4_title: "RAW Connoisseur King Size + Conos",
+        p4_desc: "Papeles ultrafinos sin refinar con puntas de boquilla integradas para un quemado suave y parejo.",
+        price_placeholder: "(precio placeholder)",
+        btn_add_cart: "Agregar al carrito",
+        promo_title: "15% de descuento en tu primera compra",
+        promo_subtitle: "Usa el código",
+        promo_subtitle2: "al pagar online o en mostrador en nuestra tienda de Corona, Queens.",
+        btn_register: "Regístrate",
+        story_eyebrow: "Nuestra Misión",
+        story_title: "De segundas oportunidades a la excelencia cannábica",
+        story_badge_label: "Empleos creados con impacto comunitario",
+        story_paragraph: "Fundada por neoyorquinos que vivieron en primera persona el impacto del sistema penal, Buddies Dispensary NYC nació para transformar la industria del cannabis en un motor de justicia y oportunidades reales. Hoy ofrecemos los mejores productos cultivados en el estado de Nueva York mientras creamos empleos dignos, educamos a nuestra comunidad y construimos un modelo comercial transparente, seguro e inclusivo desde Corona, Queens.",
+        story_stat1: "Capital Social",
+        story_stat2: "Tienda Insigne",
+        story_stat3: "Licencia Oficial",
+        btn_learn_more: "Conoce más",
+        rewards_eyebrow: "Buddies Club",
+        rewards_title: "Programa de Recompensas",
+        rewards_subtitle: "Gana puntos en cada compra y disfruta de beneficios exclusivos en nuestra tienda y delivery.",
+        step1_title: "Compra",
+        step1_desc: "Acumula 1 punto por cada $1 gastado en compras en tienda o delivery en nuestra sucursal de Corona.",
+        step2_title: "Suma Puntos",
+        step2_desc: "Desbloquea niveles especiales, regalos de cumpleaños y accesos preferenciales a cosechas de edición limitada.",
+        step3_title: "Canjea",
+        step3_desc: "Aplica tus puntos acumulados como descuentos directos en tus futuras compras en línea o en mostrador.",
+        btn_join_free: "Únete gratis",
+        test_eyebrow: "Opiniones Reales",
+        test_title: "Testimonios",
+        test_subtitle: "Lo que dicen nuestros clientes sobre su experiencia en Buddies Dispensary NYC en Corona, Queens.",
+        test1_quote: "\"La atención en la tienda de 43rd Ave en Corona es excelente. Queda a pasos de la estación del tren 7 en 103rd St y los budtenders saben exactamente qué recomendarte.\"",
+        test1_author: "Cliente en Corona, Queens",
+        test2_quote: "\"El delivery en Queens llegó en menos de 45 minutos. Todo perfectamente sellado con certificados de laboratorio. Me encanta apoyar a Buddies Dispensary por su misión social tan real.\"",
+        test2_author: "Cliente en Queens, NY",
+        test3_quote: "\"Excelente ubicación cerca de Flushing Meadows y Citi Field. Tienen la mejor selección de pre-rolls y flores frescas de cultivadores de NY. ¡La recogida exprés te ahorra muchísimo tiempo!\"",
+        test3_author: "Cliente en Corona Plaza",
+        store_eyebrow: "Visítanos en Queens",
+        store_title: "Nuestra Ubicación",
+        store_subtitle: "Dispensaria legal insigne en el corazón de Corona, Queens. Fácil acceso en metro, autobús o vehículo.",
+        store_desc_text: "Nuestra dispensaria principal se encuentra estratégicamente ubicada en el vibrante vecindario de <strong>Corona, Queens</strong>, a solo 1 cuadra de <em>Corona Plaza</em> y a pocos minutos de <em>Flushing Meadows Corona Park</em> y <em>Citi Field</em>. Un espacio moderno, seguro, luminoso y accesible con budtenders bilingües listos para asesorarte.",
+        transit_title: "Transporte Público Cercano (MTA):",
+        transit_subway: "<strong>Metro (Tren 7):</strong> Estación <strong>103rd St - Corona Plaza</strong> (a 2 minutos a pie / 150 metros) y estación <strong>Junction Blvd</strong> (servicio local y exprés).",
+        transit_bus: "<strong>Autobuses MTA:</strong> Líneas <strong>Q23</strong> (por 102nd/104th St), <strong>Q58</strong> (Corona Ave) y <strong>Q72</strong> (conexión directa con Junction Blvd y Aeropuerto LaGuardia).",
+        transit_car: "<strong>Acceso Vehicular:</strong> Conexión inmediata desde <strong>Grand Central Parkway</strong> (Salida Roosevelt Ave) y <strong>Long Island Expressway (I-495)</strong>.",
+        feature_pickup: "Retiro Exprés en 15 min",
+        feature_delivery: "Delivery en todo Queens & NYC",
+        feature_atm: "Cajero ATM en tienda",
+        feature_bilingual: "Atención en Español e Inglés",
+        btn_directions: "Cómo llegar (Google Maps)",
+        btn_view_menu_online: "Ver menú online",
+        edu_eyebrow: "Educación & Consumo Responsable",
+        edu_title: "Guía para el Consumidor Consciente",
+        edu_subtitle: "Información clara, recomendaciones científicas y consejos prácticos para que disfrutes tu experiencia cannábica con total confianza y bienestar.",
+        art1_tag: "Cepas & Efectos • 4 min lectura",
+        art1_title: "Indica, Sativa o Híbrida: ¿Cuál se adapta mejor a tu momento?",
+        art1_desc: "Descubre cómo los perfiles de terpenos y la proporción de cannabinoides influyen en la relajación física, la creatividad o el enfoque diario según la ocasión.",
+        art2_tag: "Consumo Seguro • 3 min lectura",
+        art2_title: "Guía de Comestibles: Cómo dosificar correctamente y evitar excesos",
+        art2_desc: "La regla de oro: empieza con 2.5mg a 5mg de THC y espera al menos 2 horas. Conoce tiempos de absorción hepática y cómo tener una experiencia placentera.",
+        art3_tag: "Calidad & Pureza • 5 min lectura",
+        art3_title: "Por qué comprar legal en Queens: Seguridad, COA y Apoyo Local",
+        art3_desc: "Todos nuestros productos cuentan con certificados de análisis oficiales (COA) libres de pesticidas, metales y moho, apoyando al desarrollo económico de NY.",
+        btn_read_article: "Leer artículo",
+        faq_eyebrow: "Dudas Comunes",
+        faq_title: "Preguntas Frecuentes",
+        faq_subtitle: "Todo lo que necesitas saber antes de comprar en tienda o pedir delivery en Buddies Dispensary NYC.",
+        faq1_q: "¿Cuáles son los requisitos de edad e identificación para comprar?",
+        faq1_a: "Debes tener al menos 21 años cumplidos. Es obligatorio presentar una identificación física oficial y vigente emitida por el gobierno (licencia de conducir estadounidense o internacional, pasaporte de cualquier país o identificación estatal). No se requiere residencia en el estado de Nueva York ni tarjeta médica.",
+        faq2_q: "¿Cómo funciona el servicio de delivery y qué zonas cubren?",
+        faq2_a: "Entregamos directamente en domicilios particulares en Queens, Manhattan y Brooklyn mediante mensajería segura y discreta. Al ordenar en nuestro menú online, ingresas tu dirección y recibirás actualizaciones por SMS. El titular de la compra debe recibir el pedido y presentar su identificación 21+.",
+        faq3_q: "¿Cuáles son los límites legales de compra en Nueva York?",
+        faq3_a: "De acuerdo con las regulaciones de la NYS OCM, un adulto de 21+ puede comprar hasta 3 onzas (85 gramos) de flor de cannabis y hasta 24 gramos de cannabis concentrado (aceites para vape, comestibles, tinturas y ceras) por persona al día.",
+        faq4_q: "¿Qué formas de pago aceptan en tienda y para pedidos online?",
+        faq4_a: "Aceptamos efectivo (contamos con cajeros automáticos ATM seguros dentro de nuestra sucursal de Corona) y pagos mediante tarjeta de débito con PIN (PIN-debit). Debido a regulaciones bancarias federales, las tarjetas de crédito tradicionales aún no están permitidas.",
+        faq5_q: "¿Cuáles son los horarios de atención y retiro en tienda (pickup)?",
+        faq5_a: "Nuestra tienda en 102-58 43rd Avenue (Corona, Queens) opera de 9:00 AM a 11:00 PM los 7 días de la semana. Puedes pedir online para pickup exprés y tu orden estará lista en menos de 15 minutos en el mostrador dedicado.",
+        faq6_q: "¿Los productos están certificados y analizados por laboratorios?",
+        faq6_a: "Absolutamente. El 100% de los productos comercializados en Buddies Dispensary NYC cuentan con Certificados de Análisis (COA) emitidos por laboratorios independientes certificados por el estado. Puedes escanear el código QR en cada empaque para verificar potencia y pureza libre de contaminantes.",
+        news_eyebrow: "Comunidad Buddies",
+        news_title: "Entérate de las Novedades",
+        news_desc: "Suscríbete para recibir lanzamientos de cosechas exclusivas, eventos comunitarios en Corona y promociones especiales de Buddies Dispensary NYC.",
+        news_btn: "Recibe ofertas exclusivas",
+        news_success: "¡Gracias por unirte a la comunidad Buddies Dispensary NYC! Te hemos enviado tu cupón de bienvenida.",
+        footer_brand_desc: "Dispensaria legal de cannabis en Corona, Queens con enfoque en justicia social, calidad artesanal neoyorquina y empoderamiento comunitario.",
+        footer_col_nav: "Navegación",
+        footer_col_location: "Ubicación & Tienda",
+        footer_col_contact: "Contacto",
+        f_link_home: "Inicio",
+        f_link_menu: "Menú y Productos",
+        f_link_categories: "Categorías",
+        f_link_about: "Nuestra Historia",
+        f_link_rewards: "Buddies Club",
+        f_link_faq: "Preguntas Frecuentes",
+        f_near_train: "Cerca del Tren 7 (103rd St)",
+        f_near_plaza: "A pasos de Corona Plaza",
+        f_delivery: "Servicio de Delivery",
+        f_pickup: "Retiro Exprés (Pickup)",
+        footer_hours: "Horario",
+        footer_legal_warning: "<strong>Aviso de consumo responsable:</strong> Para uso exclusivo de adultos mayores de 21 años. Mantener fuera del alcance de niños y mascotas. En caso de ingestión accidental o sospecha de sobredosis, llame a Poison Help al 1-800-222-1222 o al 911. No conduzca ni opere maquinaria pesada bajo los efectos del cannabis. Las mujeres embarazadas o en periodo de lactancia no deben consumir cannabis debido a posibles riesgos para la salud del feto o lactante.",
+        footer_hopeline: "¿Problemas con el juego o sustancias? Hay esperanza. Llame a la línea de ayuda gratuita y confidencial de NY: <strong>1-877-8-HOPENY</strong> o envíe un mensaje de texto con la palabra <strong>HOPENY al 467369</strong> (Disponible 24/7 en español e inglés).",
+        footer_rights: "Todos los derechos reservados.",
+        footer_terms: "Términos y Condiciones",
+        footer_privacy: "Política de Privacidad",
+        toast_lang_switched: "🌐 Idioma cambiado a Español"
+      },
+      en: {
+        age_title: "Age Verification",
+        age_desc: "Welcome to <strong class=\"text-red\">Buddies Dispensary NYC</strong>. To enter our website and purchase cannabis products in New York State, you must be 21 years of age or older.",
+        age_confirm: "Yes, I am 21 or older",
+        age_deny: "No, I am under 21",
+        age_legal: "Officially licensed New York State Dispensary (<span class=\"text-green\">NYS OCM</span>). Cannabis consumption is strictly regulated for adults 21+.",
+        age_rejected_title: "Access Restricted",
+        age_rejected_desc: "We are sorry. In accordance with New York State laws (NYS OCM), you must be at least 21 years old to view the menu and purchase cannabis products.",
+        age_rejected_box: "For resources and guidance for youth and families, visit <strong>cannabis.ny.gov</strong> or call the helpline <strong>1-877-8-HOPENY</strong>.",
+        age_rejected_btn: "Go to official NYS OCM website",
+        header_store_badge: "Corona, Queens · 102-58 43rd Ave",
+        nav_location: "Location",
+        nav_about: "About Us",
+        nav_education: "Education",
+        nav_rewards: "Rewards",
+        nav_contact: "Contact",
+        nav_faq: "FAQ",
+        nav_location_transit: "Location & Transit",
+        btn_order_now: "Order Now",
+        mobile_our_location: "📍 Our Location:",
+        store_open_today_text: "Open today: 9:00 AM – 11:00 PM",
+        btn_open_maps: "Open in Google Maps",
+        hero_tag_ocm: "Official NYS OCM License",
+        hero_tag_queens: "Corona, Queens • 4.8★",
+        hero_title: "You get New York's finest. <span class=\"text-red\">We get second chances.</span>",
+        hero_subtitle: "<strong class=\"text-white\">Buddies Dispensary NYC</strong> is your legal dispensary in <strong>Corona, Queens</strong> (102-58 43rd Ave), delivering top-tier flowers and extracts crafted by local NY growers with social equity and real opportunities.",
+        btn_view_menu: "View Menu",
+        hero_emblem_tag: "OFFICIAL QUEENS DISPENSARY",
+        hero_pill_1: "100% Legal & Regulated by NY State",
+        hero_pill_2: "15-Minute Express Pickup or Home Delivery",
+        hero_pill_3: "102-58 43rd Ave (Next to 7 Train in Corona)",
+        trust_item1_title: "Verified State License",
+        trust_item1_desc: "100% legal dispensary authorized by NYS OCM.",
+        trust_item2_title: "4.8★ · 500+ Reviews",
+        trust_item2_desc: "Top customer satisfaction from our local community.",
+        trust_item3_title: "Delivery in Queens & NYC",
+        trust_item3_desc: "Fast, discreet and secure delivery right to your door.",
+        trust_item4_title: "Pickup in Corona",
+        trust_item4_desc: "Ready for express in-store counter pickup in 15 mins.",
+        cat_eyebrow: "Premium Catalog",
+        cat_title: "Explore by Category",
+        cat_subtitle: "Independent lab-tested cannabis cultivated by local craft growers across New York State.",
+        cat_flowers: "Flower",
+        cat_flowers_count: "40+ Strains",
+        cat_prerolls: "Pre-rolls",
+        cat_prerolls_count: "Singles & Multi-packs",
+        cat_concentrates: "Concentrates",
+        cat_concentrates_count: "Live Rosin, Wax",
+        cat_vapes: "Vaporizers",
+        cat_vapes_count: "Pods & Cartridges",
+        cat_edibles: "Edibles",
+        cat_edibles_count: "Gummies & Chocolates",
+        cat_tinctures: "Tinctures",
+        cat_tinctures_count: "Full Spectrum Droppers",
+        cat_topicals: "Topicals",
+        cat_topicals_count: "Creams & Balms",
+        cat_accessories: "Accessories",
+        cat_accessories_count: "RAW Papers, Cones",
+        bestsellers_eyebrow: "Queens Top Sellers",
+        bestsellers_title: "Best Sellers",
+        bestsellers_subtitle: "Customer favorites in Corona, Queens and across New York City.",
+        badge_hybrid: "Hybrid",
+        badge_sativa: "Sativa",
+        badge_topical: "Topical",
+        badge_accessories: "Accessories",
+        p1_badge: "5x 0.65g | Organic Flower",
+        p1_title: "Lifter Artisanal Pre-Rolls (5-Pack)",
+        p1_desc: "100% organic hemp paper cones packed with cured craft flower and sweet berry undertones.",
+        p2_title: "Califlora Gold Edition — Vape Pod 1g",
+        p2_desc: "Ergonomic rechargeable pod device loaded with pure live resin extract and natural botanical terpenes.",
+        p3_title: "Nourishing & Restorative Face Cream",
+        p3_desc: "Botanical formula with hemp seed extract and antioxidants to soothe and hydrate skin.",
+        p4_title: "RAW Connoisseur King Size + Cones",
+        p4_desc: "Unrefined ultra-thin rolling papers with built-in filter tips for a smooth, even burn.",
+        price_placeholder: "(placeholder price)",
+        btn_add_cart: "Add to Cart",
+        promo_title: "15% off your first purchase",
+        promo_subtitle: "Use code",
+        promo_subtitle2: "at checkout online or in-store at our Corona, Queens dispensary.",
+        btn_register: "Sign Up",
+        story_eyebrow: "Our Mission",
+        story_title: "From second chances to cannabis excellence",
+        story_badge_label: "Jobs created with community impact",
+        story_paragraph: "Founded by New Yorkers who experienced the impact of the criminal justice system firsthand, Buddies Dispensary NYC was established to transform the legal cannabis industry into a vehicle for restorative justice and real opportunities. Today, we offer the finest NY-grown products while creating quality careers, educating our neighbors, and cultivating an inclusive dispensary culture in Corona, Queens.",
+        story_stat1: "Social Equity",
+        story_stat2: "Flagship Store",
+        story_stat3: "Official License",
+        btn_learn_more: "Learn More",
+        rewards_eyebrow: "Buddies Club",
+        rewards_title: "Rewards Program",
+        rewards_subtitle: "Earn points on every purchase and unlock exclusive perks in-store and on delivery orders.",
+        step1_title: "Shop",
+        step1_desc: "Earn 1 point for every $1 spent in-store or online delivery at our Corona dispensary.",
+        step2_title: "Collect Points",
+        step2_desc: "Unlock VIP tiers, birthday rewards, and exclusive early access to small-batch limited harvests.",
+        step3_title: "Redeem",
+        step3_desc: "Redeem your accumulated points as instant dollar discounts on future online or in-store orders.",
+        btn_join_free: "Join for Free",
+        test_eyebrow: "Real Reviews",
+        test_title: "Testimonials",
+        test_subtitle: "What our verified customers are saying about Buddies Dispensary NYC in Corona, Queens.",
+        test1_quote: "\"The staff at the 43rd Ave store in Corona is top notch. It's just steps from the 103rd St 7 train station and the budtenders recommend exactly what fits your vibe.\"",
+        test1_author: "Customer in Corona, Queens",
+        test2_quote: "\"Queens delivery arrived in under 45 minutes! Everything was sealed with lab COA certificates. I love supporting Buddies for their authentic social equity mission.\"",
+        test2_author: "Customer in Queens, NY",
+        test3_quote: "\"Great spot close to Flushing Meadows and Citi Field. Best curated pre-roll and craft flower selection from Upstate growers. Express pickup is super fast!\"",
+        test3_author: "Customer in Corona Plaza",
+        store_eyebrow: "Visit Us in Queens",
+        store_title: "Our Location",
+        store_subtitle: "Flagship licensed dispensary in the heart of Corona, Queens. Easy transit access via subway, bus or car.",
+        store_desc_text: "Our flagship dispensary is located in the lively neighborhood of <strong>Corona, Queens</strong>, just 1 block from <em>Corona Plaza</em> and minutes from <em>Flushing Meadows Corona Park</em> and <em>Citi Field</em>. A modern, safe, bright and accessible space staffed by friendly bilingual budtenders.",
+        transit_title: "Nearby Public Transit (MTA):",
+        transit_subway: "<strong>Subway (7 Train):</strong> <strong>103rd St - Corona Plaza</strong> station (2 min walk / 150m) and <strong>Junction Blvd</strong> station (Local & Express).",
+        transit_bus: "<strong>MTA Buses:</strong> <strong>Q23</strong> (via 102nd/104th St), <strong>Q58</strong> (Corona Ave) and <strong>Q72</strong> (direct connection with Junction Blvd & LaGuardia Airport).",
+        transit_car: "<strong>Driving Access:</strong> Immediate access from <strong>Grand Central Parkway</strong> (Roosevelt Ave Exit) and <strong>Long Island Expressway (I-495)</strong>.",
+        feature_pickup: "15-min Express Pickup",
+        feature_delivery: "Delivery across Queens & NYC",
+        feature_atm: "In-Store ATM Available",
+        feature_bilingual: "Bilingual English & Spanish Staff",
+        btn_directions: "Get Directions (Google Maps)",
+        btn_view_menu_online: "View Online Menu",
+        edu_eyebrow: "Education & Responsible Consumption",
+        edu_title: "Conscious Consumer Guide",
+        edu_subtitle: "Clear scientific guidance and practical tips so you can enjoy your cannabis experience with total confidence and well-being.",
+        art1_tag: "Strains & Effects • 4 min read",
+        art1_title: "Indica, Sativa or Hybrid: Which one best fits your mood?",
+        art1_desc: "Discover how terpene profiles and cannabinoid ratios influence body relaxation, creativity, or daytime focus depending on the occasion.",
+        art2_tag: "Safe Consumption • 3 min read",
+        art2_title: "Edibles Dosing Guide: Start low and go slow",
+        art2_desc: "The golden rule: start with 2.5mg to 5mg of THC and wait at least 2 hours. Learn liver absorption onset times for a smooth, enjoyable journey.",
+        art3_tag: "Quality & Purity • 5 min read",
+        art3_title: "Why buy legal in Queens: Safety, COA & Community Support",
+        art3_desc: "Every product in our store features third-party lab certificates of analysis (COA) free from pesticides, heavy metals, and mold.",
+        btn_read_article: "Read Article",
+        faq_eyebrow: "Common Questions",
+        faq_title: "Frequently Asked Questions",
+        faq_subtitle: "Everything you need to know before visiting in-store or ordering delivery from Buddies Dispensary NYC.",
+        faq1_q: "What are the age and ID requirements to purchase?",
+        faq1_a: "You must be at least 21 years of age. A valid physical government-issued photo ID is required (US or international driver's license, passport from any country, or state ID). NY State residency or a medical card is NOT required.",
+        faq2_q: "How does delivery service work and what areas are covered?",
+        faq2_a: "We deliver directly to private residential addresses throughout Queens, Manhattan, and Brooklyn via secure, discreet couriers. Order on our online menu, enter your address, and receive live SMS updates. The purchasing customer must be 21+ with ID upon receipt.",
+        faq3_q: "What are the legal purchasing limits in New York?",
+        faq3_a: "Under NYS OCM regulations, an adult 21+ may purchase up to 3 ounces (85 grams) of cannabis flower and up to 24 grams of concentrated cannabis (vape oils, edibles, tinctures, waxes) per person per day.",
+        faq4_q: "What payment methods are accepted in-store and online?",
+        faq4_a: "We accept cash (secure ATMs are available inside our Corona location) and PIN-debit cards. Due to federal banking regulations, traditional credit cards cannot be processed.",
+        faq5_q: "What are your operating hours and express pickup times?",
+        faq5_a: "Our Corona dispensary at 102-58 43rd Avenue is open 7 days a week from 9:00 AM to 11:00 PM. Order online for express pickup and your bag will be ready in under 15 minutes at our dedicated pickup counter.",
+        faq6_q: "Are all products lab-certified and tested for purity?",
+        faq6_a: "Absolutely. 100% of products at Buddies Dispensary NYC feature Certificates of Analysis (COA) issued by state-certified independent testing labs. You can scan the QR code on any package to verify potency and clean test results.",
+        news_eyebrow: "Buddies Community",
+        news_title: "Stay in the Loop",
+        news_desc: "Subscribe to receive drops of exclusive small-batch harvests, local community events in Corona, and special offers from Buddies Dispensary NYC.",
+        news_btn: "Get Exclusive Deals",
+        news_success: "Thank you for joining the Buddies Dispensary NYC community! Your welcome promo code has been sent.",
+        footer_brand_desc: "Licensed adult-use cannabis dispensary in Corona, Queens focused on restorative justice, New York craft quality, and community empowerment.",
+        footer_col_nav: "Navigation",
+        footer_col_location: "Location & Store",
+        footer_col_contact: "Contact",
+        f_link_home: "Home",
+        f_link_menu: "Menu & Products",
+        f_link_categories: "Categories",
+        f_link_about: "Our Story",
+        f_link_rewards: "Buddies Club",
+        f_link_faq: "FAQ",
+        f_near_train: "Near 7 Train (103rd St)",
+        f_near_plaza: "Steps from Corona Plaza",
+        f_delivery: "Delivery Service",
+        f_pickup: "Express In-Store Pickup",
+        footer_hours: "Hours",
+        footer_legal_warning: "<strong>Responsible consumption notice:</strong> For use only by adults 21 years of age and older. Keep out of reach of children and pets. In case of accidental ingestion, call Poison Help at 1-800-222-1222 or 911. Do not drive or operate heavy machinery under the influence of cannabis. Pregnant or nursing individuals should not use cannabis.",
+        footer_hopeline: "Problems with gambling or substance use? There is hope. Call the confidential and free NY helpline: <strong>1-877-8-HOPENY</strong> or text <strong>HOPENY to 467369</strong> (Available 24/7 in English and Spanish).",
+        footer_rights: "All rights reserved.",
+        footer_terms: "Terms and Conditions",
+        footer_privacy: "Privacy Policy",
+        toast_lang_switched: "🌐 Language switched to English"
+      }
+    };
+
+    let currentLang = localStorage.getItem('buddies_lang') || 'es';
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      currentLang = lang;
+      localStorage.setItem('buddies_lang', lang);
+      document.documentElement.lang = lang;
+
+      // Actualizar botones activos
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.textContent.trim().toLowerCase() === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Actualizar todos los elementos con data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // Actualizar placeholders en inputs
+      const emailInput = document.getElementById('newsletterEmail');
+      if (emailInput) {
+        emailInput.placeholder = lang === 'en' ? 'Your email address...' : 'Tu correo electrónico...';
+      }
+
+      showToast(translations[lang].toast_lang_switched);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      // Inicializar idioma guardado
+      if (currentLang !== 'es') {
+        setLanguage(currentLang);
+      }
+
       // ------------------------------------------------------------------------
       // 1. Verificación de Edad 21+ (Modal bloqueante con persistencia)
       // ------------------------------------------------------------------------
@@ -2946,7 +3524,8 @@
       btnAgeConfirm.addEventListener('click', () => {
         localStorage.setItem('buddies_age_verified_21', 'true');
         ageModalOverlay.classList.add('hidden');
-        showToast('✓ Edad verificada con éxito. ¡Bienvenido a Buddies Dispensary NYC!');
+        const msg = currentLang === 'en' ? '✓ Age verified. Welcome to Buddies Dispensary NYC!' : '✓ Edad verificada con éxito. ¡Bienvenido a Buddies Dispensary NYC!';
+        showToast(msg);
       });
 
       btnAgeDeny.addEventListener('click', () => {
@@ -2984,7 +3563,6 @@
         trigger.addEventListener('click', () => {
           const isActive = item.classList.contains('active');
 
-          // Cerrar otros acordeones
           faqItems.forEach(otherItem => {
             if (otherItem !== item) {
               otherItem.classList.remove('active');
@@ -2993,7 +3571,6 @@
             }
           });
 
-          // Alternar el actual
           if (isActive) {
             item.classList.remove('active');
             trigger.setAttribute('aria-expanded', 'false');
@@ -3026,7 +3603,8 @@
         badge.style.transform = 'scale(1.3)';
         setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
       }
-      showToast(`🛒 Agregado: ${productName}`);
+      const prefix = currentLang === 'en' ? '🛒 Added:' : '🛒 Agregado:';
+      showToast(`${prefix} ${productName}`);
     }
 
     function showToast(message) {
@@ -3057,7 +3635,8 @@
       if (input && input.value) {
         msg.style.display = 'block';
         input.value = '';
-        showToast('✨ ¡Te has suscrito con éxito!');
+        const toastText = currentLang === 'en' ? '✨ Successfully subscribed!' : '✨ ¡Te has suscrito con éxito!';
+        showToast(toastText);
       }
     }
   </script>
